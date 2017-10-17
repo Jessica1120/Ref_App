@@ -9,17 +9,17 @@ myApp.controller('LoginController', function($http, $location, UserService) {
 
     vm.login = function() {
       console.log('LoginController -- login');
-      if(vm.user.username === '' || vm.user.password === '') {
-        vm.message = "Enter your username and password!";
+      if(vm.user.username === '' || vm.user.password === '') { //if entries are empty
+        vm.message = "Enter your username and password!";      //tells you to enter info
       } else {
-        console.log('LoginController -- login -- sending to server...', vm.user);
-        $http.post('/', vm.user).then(function(response) {
-          if(response.data.username) {
+        console.log('LoginController -- login -- sending to server...', vm.user); 
+        $http.post('/', vm.user).then(function(response) { //if filled in...
+          if(response.data.username) {   //and if correct
             console.log('LoginController -- login -- success: ', response.data);
             // location works with SPA (ng-route)
-            $location.path('/user'); // http://localhost:5000/#/user
-          } else {
-            console.log('LoginController -- login -- failure: ', response);
+            $location.path('/user'); // redirect page to http://localhost:5000/#/user
+          } else {   //if entered and NOT correct
+            console.log('LoginController -- login -- failure: ', response); //send back to log in
             vm.message = "Wrong!!";
           }
         }).catch(function(response){
