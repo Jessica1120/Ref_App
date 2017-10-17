@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+var path = require('path');
 
 var passport = require('./strategies/sql.localstrategy');
 var sessionConfig = require('./modules/session.config');
