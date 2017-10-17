@@ -1,10 +1,15 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <div class="container">
 
-    <h1 id="welcome" class="lead">Welcome, {{uc.userObject.userName}}!</h1>
+    <h1 id="welcome" class="lead">Welcome, {{uc.userObject.username}}!</h1>
     <button class="btn btn-default" ng-click="uc.userService.logout()">Log Out</button>
 
-    <button class=""
+<div>
+    Ref Info: 
+   <p>{{uc.userObject.name}}</p> 
+   <p>{{uc.userObject.league}}</p>
+    
+</div>
    
    
    
