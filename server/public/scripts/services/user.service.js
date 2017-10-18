@@ -2,7 +2,7 @@ myApp.service('UserService', function($http, $location){
     console.log('UserService Loaded');
     var self = this;
   
-    var userObject = {};
+    self.userObject = {};
   
       self.getuser = function(){
         console.log('UserService -- getuser');
@@ -12,7 +12,7 @@ myApp.service('UserService', function($http, $location){
         }).then(function(response) {
             if(response.data.username) {
                 // user has a curret session on the server
-                self.userObject = response.data//self.userObject.userName = response.data.username; //resend this in new get function for profile
+                self.userObject.username = response.data.username//self.userObject.userName = response.data.username; //resend this in new get function for profile
                 console.log('UserService -- getuser -- User Data: ', self.userObject.userName);
             } else {
                 console.log('UserService -- getuser -- failure', response);
@@ -34,20 +34,20 @@ myApp.service('UserService', function($http, $location){
       };
     });
   
-    self.getprofile = function(){
-      console.log('UserService -- getprofile');
-      $http ({
-        method: 'GET',
-        url:  '/profile',
-      }).then(function(response) {
-          if(response.data.username) {
-              // user has a curret session on the server
-              self.userObject.userName = response.data.username; //resend this in new get function for profile
-              console.log('UserService -- getuser -- User Data: ', self.userObject.userName);
-          } else {
-              console.log('UserService -- getuser -- failure', response);
-              // user has no session, bounce them back to the login page
-              $location.path("/home");
-          }
-        });
-      };
+    // self.getprofile = function(){
+    //   console.log('UserService -- getprofile');
+    //   $http ({
+    //     method: 'GET',
+    //     url:  '/profile',
+    //   }).then(function(response) {
+    //       if(response.data.username) {
+    //           // user has a curret session on the server
+    //           self.userObject.userName = response.data.username; //resend this in new get function for profile
+    //           console.log('UserService -- getuser -- User Data: ', self.userObject.userName);
+    //       } else {
+    //           console.log('UserService -- getuser -- failure', response);
+    //           // user has no session, bounce them back to the login page
+    //           $location.path("/home");
+    //       }
+    //     });
+    //   };

@@ -19,7 +19,7 @@ passport.deserializeUser(function(id, done) {
 
     var user = {};
 
-    client.query("SELECT * FROM users INNER JOIN profiles ON users.id = profiles.user_id WHERE users.id = $1", [id], function(err, result) {
+    client.query("SELECT * FROM users WHERE id = $1", [id], function(err, result) {
 
       // Handle Errors
       if(err) {
@@ -30,7 +30,6 @@ passport.deserializeUser(function(id, done) {
 
       user = result.rows[0];
       release();
-      console.log('this is the:', result.rows);
 
       if(!user) {
           // user not found

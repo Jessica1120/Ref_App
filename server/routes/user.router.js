@@ -8,10 +8,10 @@ router.get('/', function(req, res) {
   if(req.isAuthenticated()) {
     // send back user object from database
     console.log('logged in', req.user);
-    //var userInfo = {
-      //username : req.user.username
-    //};
-    res.send(req.user); //userInfo
+    var userInfo = {
+      username : req.user.username
+    };
+    res.send(userInfo);
   } else {
     // failure best handled on the server. do redirect here.
     console.log('not logged in');
