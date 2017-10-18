@@ -1,20 +1,19 @@
 CREATE TABLE "users" (
 "id" serial primary key,
 "username" varchar (80) not null UNIQUE,
-"password" varchar(240) not null
-);
-
+"password" varchar(240) not null);
 
 CREATE TABLE "profiles" (
 "id" serial primary key,
-"name" varchar not null,
-"league" varchar (100) not null,
-"city_state" varchar not null,
-"games_history" varchar(200) not null,
-"email" varchar (40) not null,
+"derbyname" varchar,
+"league" varchar (100),
+"city_state" varchar,
+"games_history" varchar(200),
+"email" varchar (40),
 "bio" text, 
 "certifications" text,
 "user_id" int REFERENCES users (id) ON DELETE CASCADE);
+
 
 CREATE TABLE "games" (
 "date" date,
@@ -22,7 +21,7 @@ CREATE TABLE "games" (
 "team1" varchar (50) not null,
 "team2" varchar (50) not null,
 "headref" int REFERENCES profiles (id) ON DELETE CASCADE,
-"ipr" int REFERENCES profiles (id) ON DELETE CASCADE,
+"ipr" int REFERENCES profiles(id) ON DELETE CASCADE,
 "jr1" int REFERENCES profiles (id) ON DELETE CASCADE,
 "jr2" int REFERENCES profiles (id) ON DELETE CASCADE,
 "opr1" int REFERENCES profiles (id) ON DELETE CASCADE,

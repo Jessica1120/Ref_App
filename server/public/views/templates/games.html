@@ -1,0 +1,16 @@
+<div ng-include="'views/partials/nav.html'"></div>
+
+<div class="container" id="games"> 
+<h2>Add Games</h2>
+<div>
+    <input type=date placeholder="Date" ng-model="gc.dateIn">
+    <input type=text placeholder="Location" ng-model="gc.locationIn">
+    <input type=text placeholder="Team 1" ng-model="gc.teamOneIn">
+    <input type=text placeholder="Team 2" ng-model="gc.teamTwoIn">
+    <button type="button" class="btn btn-primary" ng-click="gc.addGame()">Add</button> 
+</div>
+<div>
+    Game: {{gc.gameList.data.date}} {{gc.gameList.data.location}}
+</div>    
+</div>
+    </div>

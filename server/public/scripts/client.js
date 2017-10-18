@@ -30,6 +30,9 @@ myApp.config(function($routeProvider, $locationProvider) {
           return UserService.getuser();
         }
       }
+    }).when('/games', {
+      templateUrl: 'views/templates/games.html',
+      controller:'GamesController as gc'
     })
     .otherwise({
       redirectTo: 'home'

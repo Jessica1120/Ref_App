@@ -1,19 +1,18 @@
 <div ng-include="'views/partials/nav.html'"></div>
-<div class="container">
+
+    <div class="container">
 
     <h1 id="welcome" class="lead">Welcome, {{uc.userObject.username}}!</h1>
     <button class="btn btn-default" ng-click="uc.userService.logout()">Log Out</button>
 
-<div>
-    Ref Info: 
-   
-    
-</div>
-   
-   
-   
-   
-   
-   
-    
     </div>
+<section ng-controller="ProfileController as pc">
+   <div ng-init="pc.getProfile()">
+<div class="container" id="profile">
+Derby Name: {{pc.profileInfo.data.derbyname}}
+League: {{pc.profileInfo.data.league}}
+
+</div>
+
+</div>
+</section>

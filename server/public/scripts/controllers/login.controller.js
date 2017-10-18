@@ -12,10 +12,10 @@ myApp.controller('LoginController', function($http, $location, UserService) {
       if(vm.user.username === '' || vm.user.password === '') { //if entries are empty
         vm.message = "Enter your username and password!";      //tells you to enter info
       } else {
-        console.log('LoginController -- login -- sending to server...', vm.user); 
+        console.log('LoginController -- login -- sending to server...'); 
         $http.post('/', vm.user).then(function(response) { //if filled in...
           if(response.data.username) {   //and if correct
-            console.log('LoginController -- login -- success: ', response.data);
+            console.log('LoginController -- login -- success: ');
             // location works with SPA (ng-route)
             $location.path('/user'); // redirect page to http://localhost:5000/#/user
           } else {   //if entered and NOT correct
@@ -34,7 +34,7 @@ myApp.controller('LoginController', function($http, $location, UserService) {
       if(vm.user.username === '' || vm.user.password === '') {
         vm.message = "Choose a username and password!";
       } else {
-        console.log('LoginController -- registerUser -- sending to server...', vm.user);
+        console.log('LoginController -- registerUser -- sending to server...');
         $http.post('/register', vm.user).then(function(response) {
           console.log('LoginController -- registerUser -- success');
           $location.path('/home');

@@ -10,17 +10,17 @@ myApp.service('UserService', function($http, $location){
           method: 'GET',
           url:  '/user',
         }).then(function(response) {
-            if(response.data.username) {
+            if(response.data) {
                 // user has a curret session on the server
-                self.userObject.username = response.data.username//self.userObject.userName = response.data.username; //resend this in new get function for profile
-                console.log('UserService -- getuser -- User Data: ', self.userObject.userName);
+                self.userObject.username = response.data.username; //resend this in new get function for profile
+                console.log('UserService -- getuser -- User Data: ', self.userObject.username);
             } else {
                 console.log('UserService -- getuser -- failure', response);
                 // user has no session, bounce them back to the login page
                 $location.path("/home");
-            }
-          });
-        };
+            } //end of else
+          }); //end of .then
+        }; //end of getuser function
   
       self.logout = function() {
         console.log('UserService -- logout');
@@ -30,24 +30,8 @@ myApp.service('UserService', function($http, $location){
         }).then(function(response) {
           console.log('UserService -- logout -- logged out');
           $location.path("/home");
-        });
-      };
+        });//end of .then
+      }; //end of logout function
     });
   
-    // self.getprofile = function(){
-    //   console.log('UserService -- getprofile');
-    //   $http ({
-    //     method: 'GET',
-    //     url:  '/profile',
-    //   }).then(function(response) {
-    //       if(response.data.username) {
-    //           // user has a curret session on the server
-    //           self.userObject.userName = response.data.username; //resend this in new get function for profile
-    //           console.log('UserService -- getuser -- User Data: ', self.userObject.userName);
-    //       } else {
-    //           console.log('UserService -- getuser -- failure', response);
-    //           // user has no session, bounce them back to the login page
-    //           $location.path("/home");
-    //       }
-    //     });
-    //   };
+    
