@@ -1,6 +1,6 @@
 <div ng-include="'views/partials/nav.html'"></div>
 
-<div class="container" id="games"> 
+<div class="container" id="games" ng-init="gc.getGames()"> 
 <h2>Add Games</h2>
 <div>
     <input type=date placeholder="Date" ng-model="gc.dateIn">
@@ -9,8 +9,9 @@
     <input type=text placeholder="Team 2" ng-model="gc.teamTwoIn">
     <button type="button" class="btn btn-primary" ng-click="gc.addGame()">Add</button> 
 </div>
-<div>
-    Game: {{gc.gameList.data.date}} {{gc.gameList.data.location}}
+<div> <a href="#/roster">
+  {{gc.gameList.data.date | date:'MMMM d, yyyy'}} {{gc.gameList.data.location}}
+</a>
 </div>    
 </div>
     </div>

@@ -1,7 +1,7 @@
 myApp.controller('GamesController', function(GamesService) {
     console.log('GamesController created');
     var vm = this;
-
+    
     vm.gameList = GamesService.gameList; //games object
 
     vm.getGames = function() {

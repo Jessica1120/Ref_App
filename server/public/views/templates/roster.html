@@ -1,0 +1,27 @@
+<div ng-include="'views/partials/nav.html'"></div>
+<div ng-init="rc.getGames()">
+        <div class="container" id="profile">
+                Game: {{rc.gameList.data.date}} {{rc.gameList.data.location}}
+        </div>
+        <div>
+                        Add ref: <input type=text ng-model="rc.nameIn">
+                        <input type="number" ng-model="rc.iprIn">
+                        <input type="number" ng-model="rc.jrIn">
+                        <input type="number" ng-model="rc.oprIn">
+                        <button type="button" ng-click="rc.addRef()">Add Ref</button>     
+                    </div>
+                    <div>
+                        <ul>
+                            <li ng-repeat="ref in rc.refArray">{{ref.name}}</li>
+                        </ul>
+                        <button type="button" ng-click="rc.findRoster()">Generate</button>
+                    </div>    
+                    <div>
+                        <h2>Roster</h2>
+                        <p>IPR: {{rc.roster[0].name}} </p>
+                        <p>JR: {{rc.roster[1].name}}</p> 
+                        <p>OPR: {{rc.roster[2].name}}</p>
+                    </div>
+                </div>
+</div>
+        

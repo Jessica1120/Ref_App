@@ -22,9 +22,9 @@ myApp.config(function($routeProvider, $locationProvider) {
         }
       }
     })
-    .when('/info', {
-      templateUrl: '/views/templates/info.html',
-      controller: 'InfoController',
+    .when('/roster', {
+      templateUrl: '/views/templates/roster.html',
+      controller: 'RosterController as rc',
       resolve: {
         getuser : function(UserService){
           return UserService.getuser();
@@ -32,9 +32,13 @@ myApp.config(function($routeProvider, $locationProvider) {
       }
     }).when('/games', {
       templateUrl: 'views/templates/games.html',
-      controller:'GamesController as gc'
-    })
-    .otherwise({
+      controller:'GamesController as gc',
+      resolve: {
+        getuser : function(UserService){
+          return UserService.getuser();
+        }
+      }
+    }).otherwise({
       redirectTo: 'home'
     });
 });
