@@ -1,17 +1,15 @@
 <div ng-include="'views/partials/nav.html'"></div>
 
-<div class="container" id="games" ng-init="gc.getGames()"> 
-<h2>Add Games</h2>
-<div>
-    <input type=date placeholder="Date" ng-model="gc.dateIn">
-    <input type=text placeholder="Location" ng-model="gc.locationIn">
-    <input type=text placeholder="Team 1" ng-model="gc.teamOneIn">
-    <input type=text placeholder="Team 2" ng-model="gc.teamTwoIn">
-    <button type="button" class="btn btn-primary" ng-click="gc.addGame()">Add</button> 
-</div>
-<div> <a href="#/roster">
-  {{gc.gameList.data.date | date:'MMMM d, yyyy'}} {{gc.gameList.data.location}}
-</a>
-</div>    
-</div>
+<section class="container" id="games" ng-init="gc.getGames()"> 
+    <h2>Add Games</h2>
+    <div id="addInput">
+        <input type=date placeholder="Date" ng-model="gc.dateIn">
+        <input type=text placeholder="Location" ng-model="gc.locationIn">
+        <input type=text placeholder="Team 1" ng-model="gc.teamOneIn">
+        <input type=text placeholder="Team 2" ng-model="gc.teamTwoIn">
+        <button type="button" class="btn btn-primary" ng-click="gc.addGame()">Add</button> 
     </div>
+    <div> 
+    <a href="#/roster" ng-click="gc.sendThisGame(gc.gameList.data)">{{gc.gameList.data.date | date:'MMMM d, yyyy'}} {{gc.gameList.data.location}}</a>
+    </div>    
+</section>

@@ -15,4 +15,5 @@ myApp.service('ProfileService', function($http, $location){
             console.log('self.profileInfo', self.profileInfo.data)
         }); //end then
     }; //end getProfileInfo function
+    
 }); //end ProfileService

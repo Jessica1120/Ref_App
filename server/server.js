@@ -13,6 +13,7 @@ var userRouter = require('./routes/user.router');
 var registerRouter = require('./routes/register.router');
 var profileRouter = require('./routes/profile.router');
 var gamesRouter = require('./routes/games.router');
+var thisGameRouter = require('./routes/thisGame.router');
 
 var port = process.env.PORT || 5000;
 
@@ -35,6 +36,7 @@ app.use('/register', registerRouter);
 app.use('/user', userRouter);
 app.use('/profile', profileRouter)
 app.use('/games', gamesRouter);
+app.use('/thisGame', thisGameRouter);
 
 // Catch all bucket, must be last!
 app.use('/', indexRouter);

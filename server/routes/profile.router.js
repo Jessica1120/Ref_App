@@ -17,10 +17,10 @@ router.get('/', function(req, res) {
                 } else {
                     console.log('resultObj.rows', resultObj.rows[0]);
                     res.send(resultObj.rows[0]);
+                } // end query else
+            }) // end query
+        } // end pool else
+    }) //end pool function
+}); // end get profile
 
-                }
-            })
-        }
-    })
-});
 module.exports = router;

@@ -1,7 +1,7 @@
 <div ng-include="'views/partials/nav.html'"></div>
-<div ng-init="rc.getGames()">
+<div ng-init="rc.getThisGame()">
         <div class="container" id="profile">
-                Game: {{rc.gameList.data.date}} {{rc.gameList.data.location}}
+                Game: {{rc.thisGame.data.date | date:'MMMM d, yyyy'}} {{rc.thisGame.data.location}}
         </div>
         <div>
                         Add ref: <input type=text ng-model="rc.nameIn">

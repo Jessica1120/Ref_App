@@ -19,9 +19,9 @@ router.get('/', function(req, res) {
                     res.send(resultObj.rows[0]);
                     } //end result else
                 }) // end query
-            } //end else
-        }) // end pool
-    }); //end get gunction
+            } //end pool else
+        }) // end pool function
+    }); //end get games function
 
 router.post('/', function(req, res) {
     var newGameObj = req.body;
@@ -41,10 +41,10 @@ router.post('/', function(req, res) {
                     } else {
                         console.log('game post successful');
                         res.sendStatus(202);
-                    } //end query result else
-                }); //end Query
+                    } //end result else
+                }); //end query
             } //end pool else
-        }) //end pool.connect
+        }) //end pool function
 }) //end game post
 
 module.exports = router;
