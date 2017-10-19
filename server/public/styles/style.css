@@ -5,8 +5,13 @@
 #games {
   color: red;
 }
-#profile {
-  color: white;
+
+#input {
+  color: red;
+}
+
+#rosterpage {
+  color: white
 }
 #welcome {
   color:  white;

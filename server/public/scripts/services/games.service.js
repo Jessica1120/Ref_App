@@ -3,33 +3,11 @@ myApp.service('GamesService', function($http, $location){
 
     var self = this;
 
-    self.thisGame = {}
+    self.thisGame = {} //RosterController
 
-    self.gameList = {}
+    self.gameList = {}//GamesController
 
-    self.sendThisGame = function(item) {
-        $http({
-            method: 'POST',
-            url:    '/thisGame',
-            data:   item
-        }).then(function(res) {
-            console.log('AddGame response:', res );
-            self.getThisGame();
-        }); //end then
-    }; //end sendThisGame
-
-
-    self.getThisGame = function() {
-        $http({
-            method: 'GET',
-            url:    '/thisGame',
-        }).then(function(res){
-            console.log('in service response:', res.data);
-            self.thisGame.data = (res.data);
-            console.log('GS thisGame', self.thisGame.data)
-        }); // end callback
-    }; //end Get function
-    
+    //functions for GamesController
     self.getGames = function() {
         $http({
             method: 'GET',
@@ -51,5 +29,41 @@ myApp.service('GamesService', function($http, $location){
             self.getGames();
         }); //end then
     }; //end addGame
+
+     //functions for RosterController
+     self.sendThisGame = function(item) {
+        $http({
+            method: 'POST',
+            url:    '/thisGame',
+            data:   item
+        }).then(function(res) {
+            console.log('AddGame response:', res );
+            self.getThisGame();
+        }); //end then
+    }; //end sendThisGame
+
+    self.getThisGame = function() {
+        $http({
+            method: 'GET',
+            url:    '/thisGame',
+        }).then(function(res){
+            console.log('in service response:', res.data);
+            self.thisGame.data = (res.data);
+            console.log('GS thisGame', self.thisGame.data)
+        }); // end callback
+    }; //end Get function
+
+    self.saveRoster = function(rosterObj) {
+        $http({
+            method: 'PUT',
+            url:    '/thisGame',
+            data:   rosterObj
+        }).then(function(res) {
+            console.log('AddGame response:', res );
+            self.sendThisGame()
+        }); //end then
+    }; //end addGame 
+    
+    
 }); //end GameService
 

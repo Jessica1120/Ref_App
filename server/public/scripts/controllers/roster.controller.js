@@ -64,11 +64,19 @@ myApp.controller('RosterController', function(GamesService) {
         vm.findJr();
         vm.findOpr();
             console.log('remaining refArray', vm.refArray);
-            console.log('the final roster', vm.roster);
+            console.log('suggested roster', vm.roster);
     }; //end find Roster function
         
-}); //end RosterController
+    vm.saveRoster = function() {
+        var rosterObj = {
+            headref: vm.roster[0].name,
+            ipr: vm.roster[1].name,
+            jr1: vm.roster[2].name,
+            id: vm.thisGame.data.id,
+        }
+        GamesService.saveRoster(rosterObj)
+        console.log('final roster', rosterObj);
+    }; //end saveRoster function
 
-
-    
+}); //end RosterController    
  
