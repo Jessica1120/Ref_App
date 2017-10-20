@@ -5,7 +5,10 @@ myApp.controller('GamesController', function(GamesService) {
     
     vm.gameList = GamesService.gameList; //games object
 
-    vm.sendThisGame = GamesService.sendThisGame
+    vm.sendThisGame = function(game) {
+        console.log('sendThisGame GC', game);
+        GamesService.sendThisGame(game)
+    };
 
     vm.getGames = function() {
         GamesService.getGames();
@@ -21,5 +24,9 @@ myApp.controller('GamesController', function(GamesService) {
         }; //end object
         console.log('obj', objToSend);
         GamesService.addGame(objToSend); //pass object to service
+        vm.dateIn = ''
+        vm.locationIn = ''
+        vm.teamOneIn = ''
+        vm.teamTwoIn = ''
     }; //end function
 }); //end controller

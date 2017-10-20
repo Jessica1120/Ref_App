@@ -10,7 +10,20 @@
   color: red;
 }
 
+.links {
+  color:  black;
+}
+
+.navbar {
+  background-color: white;
+}
+.profile {
+  margin: 50px;
+}
 #rosterpage {
+  color: white
+}
+#thisGame {
   color: white
 }
 #welcome {

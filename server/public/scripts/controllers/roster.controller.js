@@ -8,6 +8,7 @@ myApp.controller('RosterController', function(GamesService) {
 
     vm.roster = []; // final roster
 
+
     vm.getThisGame = function() {
         GamesService.getThisGame();
         console.log('RC', GamesService.thisGame)
@@ -22,6 +23,10 @@ myApp.controller('RosterController', function(GamesService) {
             } //end ref object
             vm.refArray.push(newRef); // pushes ref object into refArray
             console.log(vm.refArray);
+            vm.nameIn = ''
+            vm.iprIn = ''
+            vm.jrIn = ''
+            vm.oprIn = ''
     }; //end addRef
         
     vm.findRoster = function () { //generates roster
@@ -72,10 +77,11 @@ myApp.controller('RosterController', function(GamesService) {
             headref: vm.roster[0].name,
             ipr: vm.roster[1].name,
             jr1: vm.roster[2].name,
-            id: vm.thisGame.data.id,
-        }
+            id: vm.thisGame.data[0].id,
+        } //error "cannon read property of undefined" must have entry to work - figure out a way to fix this - maybe if empty/then fake data
         GamesService.saveRoster(rosterObj)
         console.log('final roster', rosterObj);
+        vm.getThisGame();
     }; //end saveRoster function
 
 }); //end RosterController    

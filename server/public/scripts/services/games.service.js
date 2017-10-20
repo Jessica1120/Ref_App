@@ -3,9 +3,9 @@ myApp.service('GamesService', function($http, $location){
 
     var self = this;
 
-    self.thisGame = {} //RosterController
+    self.thisGame = {data: []} //RosterController
 
-    self.gameList = {}//GamesController
+    self.gameList = {data: []}//GamesController
 
     //functions for GamesController
     self.getGames = function() {
@@ -13,9 +13,9 @@ myApp.service('GamesService', function($http, $location){
             method: 'GET',
             url:    '/games',
         }).then(function(res){
-            console.log('in service response:', res.data);
+            console.log('in service response:', res)
             self.gameList.data = (res.data);
-            console.log('self.gameList', self.gameList.data)
+            console.log('self.gameList', self.gameList)
         }); // end callback
     }; //end Get function
 
@@ -32,12 +32,13 @@ myApp.service('GamesService', function($http, $location){
 
      //functions for RosterController
      self.sendThisGame = function(item) {
+         console.log('in this game http call', item)
         $http({
             method: 'POST',
             url:    '/thisGame',
             data:   item
         }).then(function(res) {
-            console.log('AddGame response:', res );
+            console.log('SendThisGame response:', res );
             self.getThisGame();
         }); //end then
     }; //end sendThisGame
@@ -52,6 +53,19 @@ myApp.service('GamesService', function($http, $location){
             console.log('GS thisGame', self.thisGame.data)
         }); // end callback
     }; //end Get function
+
+    self.sendThisGame = function(game) {
+        console.log('sendThisGame GS http', game);
+        $http({
+            method: 'POST',
+            url:    '/thisGame',
+            data:   game
+        }).then(function(res) {
+            console.log('sendThisGame GS response', res);
+            self.getThisGame();
+        })
+    }
+
 
     self.saveRoster = function(rosterObj) {
         $http({

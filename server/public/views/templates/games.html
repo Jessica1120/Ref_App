@@ -10,6 +10,10 @@
         <button type="button" class="btn btn-primary" ng-click="gc.addGame()">Add</button> 
     </div>
     <div> 
-    <a href="#/roster" ng-click="gc.sendThisGame(gc.gameList.data)">{{gc.gameList.data.date | date:'MMMM d, yyyy'}} {{gc.gameList.data.location}}</a>
+    <p ng-repeat="game in gc.gameList.data"><a href="#/roster" ng-click="gc.sendThisGame(game)">
+        {{game.date | date:'MMMM d, yyyy'}} {{game.location}} {{game.team1}} v {{game.team2}}
+    </a></p>
     </div>    
 </section>
+
+

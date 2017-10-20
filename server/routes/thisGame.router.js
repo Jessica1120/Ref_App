@@ -5,8 +5,8 @@ var pool = require('../modules/pool.js');
 var thisGame = []
 
 router.post('/', function (req, res) {
-    thisGame = [];
-    console.log('in this post Game:', req.body);
+    //thisGame = [];
+    console.log('in post sendThisGame:', req.body);
     thisGame.push (req.body);
     res.sendStatus(202);
 })
@@ -37,8 +37,9 @@ router.put('/', function (req, res) {
  
 router.get('/', function(req, res) {
     console.log('in this get Game', thisGame)
-    res.send(thisGame[0]);
-}); //end get
+
+    res.send(thisGame);
+}); //end get --needs to have query that references "this game's" id. Array only works if
 
 
 module.exports = router;

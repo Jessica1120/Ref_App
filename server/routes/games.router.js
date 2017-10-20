@@ -15,8 +15,8 @@ router.get('/', function(req, res) {
                     console.log(queryError);
                     res.sendStatus(500);
                 } else {
-                    console.log('resultObj.rows', resultObj.rows[0]);
-                    res.send(resultObj.rows[0]);
+                    console.log('resultObj.rows', resultObj.rows);
+                    res.send(resultObj.rows);
                     } //end result else
                 }) // end query
             } //end pool else
