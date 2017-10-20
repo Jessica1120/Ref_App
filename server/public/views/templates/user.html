@@ -13,3 +13,19 @@
         League: {{pc.profileInfo.data.league}}
     </div>
 </section>
+
+<section ng-controller="GamesController as gc" class="container" id="games"> 
+        <h2 ng-init="gc.getGames()">Add Games</h2>
+        <div id="addInput">
+            <input type=date placeholder="Date" ng-model="gc.dateIn">
+            <input type=text placeholder="Location" ng-model="gc.locationIn">
+            <input type=text placeholder="Team 1" ng-model="gc.teamOneIn">
+            <input type=text placeholder="Team 2" ng-model="gc.teamTwoIn">
+            <button type="button" class="btn btn-primary" ng-click="gc.addGame()">Add</button> 
+        </div>
+        <div> 
+        <p ng-repeat="game in gc.gameList.data"><a href="#/roster" ng-click="gc.sendThisGame(game)">
+            {{game.date | date:'MMMM d, yyyy'}} {{game.location}} {{game.team1}} v {{game.team2}}
+        </a></p>
+        </div>    
+    </section>

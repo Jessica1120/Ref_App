@@ -81,7 +81,7 @@ myApp.controller('RosterController', function(GamesService) {
         } //error "cannon read property of undefined" must have entry to work - figure out a way to fix this - maybe if empty/then fake data
         GamesService.saveRoster(rosterObj)
         console.log('final roster', rosterObj);
-        vm.getThisGame();
+        //vm.getSavedGame(); create new route
     }; //end saveRoster function
 
 }); //end RosterController    
