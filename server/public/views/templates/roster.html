@@ -1,14 +1,16 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <section id="rosterpage" ng-init="rc.getThisGame()">
     <div class="container" id="thisGame">
-            Game: {{rc.thisGame.data[0].date | date:'MMMM d, yyyy'}} {{rc.thisGame.data[0].location}} {{rc.thisGame.data[0].team1}} v {{rc.thisGame.data[0].team2}}
+            Game: {{rc.thisGame.data[0].date | date:'MMMM d, yyyy'}} {{rc.thisGame.data[0].city}}, {{rc.thisGame.data[0].state}} {{rc.thisGame.data[0].team1}} v {{rc.thisGame.data[0].team2}}
     </div>
-    <div class="container">
+    <div class="container" ng-init="rc.getRefs()">
         <div id="input">
-            Add ref: <input type="text" ng-model="rc.nameIn">
+        Add ref: <select ng-model="rc.derbyNameIn">
+                    <option ng-repeat="ref in rc.allRefs.data">{{ref.derbyname}}</option>
+                </select>
+                <input type="number" ng-model="rc.hrIn">
                 <input type="number" ng-model="rc.iprIn">
-                <input type="number" ng-model="rc.jrIn">
-                <input type="number" ng-model="rc.oprIn">
+                <input type="number" ng-model="rc.jr1In">
                 <button type="button" ng-click="rc.addRef()">Add Ref</button>     
         </div>
     </div>    
@@ -17,15 +19,15 @@
             <div>
                 <h3>Refs:</h3>
                     <ul>
-                        <li ng-repeat="ref in rc.refArray">{{ref.name}}</li>
+                        <li ng-repeat="ref in rc.refArray">{{ref.derbyname}}</li>
                     </ul>
                     <button type="button" ng-click="rc.findRoster()">Generate</button>
             </div>    
             <div>
                 <h3>Suggested Roster</h3>
-                    <p>HR: {{rc.roster[0].name}}</p>
-                    <p>IPR: {{rc.roster[1].name}}</p> 
-                    <p>JR: {{rc.roster[2].name}}</p>
+                    <p>HR: {{rc.roster[0].derbyname}}</p>
+                    <p>IPR: {{rc.roster[1].derbyname}}</p> 
+                    <p>JR: {{rc.roster[2].derbyname}}</p>
                     <div id="buttons">
                         <button type="button" ng-click="rc.saveRoster()">Save</button>
                     </div>

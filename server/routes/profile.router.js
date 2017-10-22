@@ -9,7 +9,7 @@ router.get('/', function(req, res) {
             console.log(connectionError);
             res.sendStatus(500);
         } else {
-            client.query('SELECT * FROM profiles WHERE id = 1', function(queryError, resultObj){
+            client.query('SELECT * FROM users WHERE id = 1', function(queryError, resultObj){
                 done();
                 if(queryError) {
                     console.log(queryError);

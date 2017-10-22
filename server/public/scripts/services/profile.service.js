@@ -10,9 +10,7 @@ myApp.service('ProfileService', function($http, $location){
             method: 'GET',
             url: '/profile'
         }).then(function(res) {
-            console.log('in profile.service response:', res);
             self.profileInfo.data = (res.data);
-            console.log('self.profileInfo', self.profileInfo.data)
         }); //end then
     }; //end getProfileInfo function
     

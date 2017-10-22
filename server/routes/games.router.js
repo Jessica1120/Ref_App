@@ -10,15 +10,14 @@ router.get('/', function(req, res) {
             res.sendStatus(500);
         } else {
             client.query('SELECT * FROM games', function(queryError, resultObj){
-                done();
                 if(queryError) {
                     console.log(queryError);
                     res.sendStatus(500);
                 } else {
-                    console.log('resultObj.rows', resultObj.rows);
-                    res.send(resultObj.rows);
-                    } //end result else
-                }) // end query
+                    console.log('experiment', resultObj.rows);
+                        res.send(resultObj.rows);
+                    }//end else
+                }) //end 2nd query
             } //end pool else
         }) // end pool function
     }); //end get games function
@@ -31,8 +30,8 @@ router.post('/', function(req, res) {
                 console.log(connectionError);
                 res.sendStatus(500);
             } else {
-                var gQuery = 'INSERT INTO games (date, location, team1, team2) VALUES ($1, $2, $3, $4)';
-                var valueArray = [newGameObj.date, newGameObj.location, newGameObj.teamOne, newGameObj.teamTwo];
+                var gQuery = 'INSERT INTO games (date, city, state, team1, team2) VALUES ($1, $2, $3, $4, $5)';
+                var valueArray = [newGameObj.date, newGameObj.city, newGameObj.state, newGameObj.team1, newGameObj.team2];
                 client.query(gQuery, valueArray, function(queryError, resultObj) {
                     done();
                     if(queryError) {

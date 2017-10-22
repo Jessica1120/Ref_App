@@ -3,19 +3,15 @@ myApp.service('GamesService', function($http, $location){
 
     var self = this;
 
-    self.thisGame = {data: []} //RosterController
-
     self.gameList = {data: []}//GamesController
 
-    //functions for GamesController
     self.getGames = function() {
         $http({
             method: 'GET',
             url:    '/games',
-        }).then(function(res){
-            console.log('in service response:', res)
+        }).then(function(res) {
             self.gameList.data = (res.data);
-            console.log('self.gameList', self.gameList)
+            console.log('GS - gameList', self.gameList)
         }); // end callback
     }; //end Get function
 
@@ -30,30 +26,6 @@ myApp.service('GamesService', function($http, $location){
         }); //end then
     }; //end addGame
 
-     //functions for RosterController
-     self.sendThisGame = function(item) {
-         console.log('in this game http call', item)
-        $http({
-            method: 'POST',
-            url:    '/thisGame',
-            data:   item
-        }).then(function(res) {
-            console.log('SendThisGame response:', res );
-            self.getThisGame();
-        }); //end then
-    }; //end sendThisGame
-
-    self.getThisGame = function() {
-        $http({
-            method: 'GET',
-            url:    '/thisGame',
-        }).then(function(res){
-            console.log('in service response:', res.data);
-            self.thisGame.data = (res.data);
-            console.log('GS thisGame', self.thisGame.data)
-        }); // end callback
-    }; //end Get function
-
     self.sendThisGame = function(game) {
         console.log('sendThisGame GS http', game);
         $http({
@@ -62,22 +34,9 @@ myApp.service('GamesService', function($http, $location){
             data:   game
         }).then(function(res) {
             console.log('sendThisGame GS response', res);
-            self.getThisGame();
-        })
-    }
+        }) //end then
+    }; //end sendThisGame - stored on server only
 
-
-    self.saveRoster = function(rosterObj) {
-        $http({
-            method: 'PUT',
-            url:    '/thisGame',
-            data:   rosterObj
-        }).then(function(res) {
-            console.log('AddGame response:', res );
-            self.sendThisGame()
-        }); //end then
-    }; //end addGame 
-    
     
 }); //end GameService
 
