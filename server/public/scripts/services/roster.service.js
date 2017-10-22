@@ -37,15 +37,15 @@ myApp.service('RosterService', function($http, $location){
         }); //end then
     }; //end saveGame 
 
-    self.getUpdatedGame = function() {
-        $http({
-            method: 'GET',
-            url:    '/updatedGame',
-        }).then(function(res) {
-            self.updatedGame.data = (res.data);
-            console.log('RS getRefs', self.updatedGame.data) //figure out how to get this.
-        }); // end then
-    }; //end getRefs function
+    // self.getUpdatedGame = function() {
+    //     $http({
+    //         method: 'GET',
+    //         url:    '/thisGame',
+    //     }).then(function(res) {
+    //         self.thisGame.data = (res.data);
+    //         console.log('RS getRefs', self.updatedGame.data) //figure out how to get this.
+    //     }); // end then
+    // }; //end getRefs function
 }); //end Roster Service    
 
     
