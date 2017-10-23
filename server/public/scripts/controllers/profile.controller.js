@@ -5,6 +5,10 @@ myApp.controller('ProfileController', function(ProfileService) {
    
     vm.profileInfo = ProfileService.profileInfo; //object
 
+    vm.toggle = function () {
+      profile = !profile;
+      console.log(photo.see);
+  };
     vm.getProfile = function() {
       ProfileService.getProfile();
       console.log('profileInfo', ProfileService.profileInfo);

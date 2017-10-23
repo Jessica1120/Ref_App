@@ -1,27 +1,46 @@
 <div ng-include="'views/partials/nav.html'"></div>
 
 <div class="container">
+    <section class = "row">
+        <div class = "col-md-6">
     
-    <h1 id="welcome" class="lead">Welcome, {{uc.userObject.username}}!</h1>
-   
+    <h1 id="welcome" class="lead">{{uc.userObject.username}} is here!</h1>
 
-</div>
+        </div>
+      
+    <div ng-controller="ProfileController as pc" class="col-md-6"  ng-init="pc.getProfile()" >
+    <div id="profileInfo" ng-hide="profile">
+        <p>{{pc.profileInfo.data.derbyname}}</p>
+        <p>{{pc.profileInfo.data.league}}</p>
+        <p>{{pc.profileInfo.data.city}}, {{pc.profileInfo.data.state}}</p>
+        <p>{{pc.profileInfo.data.games_history}}</p>
+        <p>{{pc.profileInfo.data.email}}</p>
+        <p>{{pc.profileInfo.data.certifications}}</p>
+        <br>
+        <p>{{pc.profileInfo.data.bio}}</p>
+        
+        <button type="button" class="btn btn-primary" ng-click="profile=!profile">Edit</button> 
+        </div>
+    <div ng-hide="!profile" id="editProfile">
+            <p><input type=text placeholder="Derby Name" ng-model="pc.derbyNameIn" id="gameIn"></p>
+            <p><input type=text placeholder="League Affiliation" ng-model="pc.leagueIn" id="gameIn"></p>
+            <p><input type=text placeholder="City" ng-model="pc.cityIn" id="gameIn">
+            <input type=text placeholder="ST" ng-model="pc.stIn" id="gameIn"></p>
+            <p><input type=text placeholder="Games History Link" ng-model="pc.GameHistoryIn" id="gameIn"></p>
+            <p><input type=text placeholder="email" ng-model="pc.emailIn" id="gameIn"></p>            
+            <p><input type=text placeholder="Certifications" ng-model="pc.certsIn" id="gameIn"></p>
+            <p><input type=textarea placeholder="Bio" ng-model="pc.bioIn"id="gameIn"></p>      
+    <button type="button" class="btn btn-primary" ng-click="profile=!profile">Save</button>   
+    </section>    
 
-<section ng-controller="ProfileController as pc">
-    <div class="container" id="profile" ng-init="pc.getProfile()">
-        Derby Name: {{pc.profileInfo.data.derbyname}}
-        League: {{pc.profileInfo.data.league}}
-    </div>
-</section>
-
-<section ng-controller="GamesController as gc" class="container" id="games"> 
-        <h2 ng-init="gc.getGames()">Add Games</h2>
-        <div id="addInput">
-            <input type=date placeholder="Date" ng-model="gc.dateIn">
-            <input type=text placeholder="Location" ng-model="gc.cityIn">
-            <input type=text placeholder="Location" ng-model="gc.stateIn">
-            <input type=text placeholder="Team 1" ng-model="gc.team1In">
-            <input type=text placeholder="Team 2" ng-model="gc.team2In">
+    <section ng-controller="GamesController as gc" class="container"> 
+        <h2 id="addGames" ng-init="gc.getGames()">Add Games</h2>
+        <div>
+            <input type=date placeholder="Date" ng-model="gc.dateIn" id="gameIn">
+            <input type=text placeholder="City" ng-model="gc.cityIn" id="gameIn">
+            <input type=text placeholder="ST" ng-model="gc.stateIn" id="gameIn">
+            <input type=text placeholder="Team 1" ng-model="gc.team1In" id="gameIn">
+            <input type=text placeholder="Team 2" ng-model="gc.team2In"id="gameIn">
             <button type="button" class="btn btn-primary" ng-click="gc.addGame()">Add</button> 
         </div>
         <div> 
@@ -30,3 +49,4 @@
         </a></p>
         </div>    
     </section>
+</div>

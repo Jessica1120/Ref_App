@@ -1,3 +1,8 @@
+#addGames {
+  color: #f53fa9;
+  font-family: 'Permanent Marker', cursive;
+}
+
 #body {
   background-color: black;
 }
@@ -42,6 +47,10 @@
   font-size: 20px;
 }
 
+#editProfile {
+  margin: 50px;
+}
+
 .form-control {
   background-color: #fff2fa;
 }
@@ -50,8 +59,12 @@
   box-shadow: 4px 6px 6px;
 }
 
-#games {
-  color: red;
+#gameIn {
+  background-color: #fff2fa;
+}
+#gameIn:focus {
+  border-color: #f53fa9;
+  box-shadow: 4px 6px 6px;
 }
 
 .img-responsive {
@@ -70,11 +83,17 @@ text-decoration: underline;
    background: #f53fa9;
  }
 
+ .lead {
+  margin: 75px;
+  color: white;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 50px;
+ }
+
 .links {
   color:  black;
   margin: 30px;
 }
-
 
 .navbar {
   background-color: white;
@@ -83,9 +102,13 @@ text-decoration: underline;
   font-size: 20px;
   text-align: right;
 }
-.profile {
-  margin: 50px;
-}
+ #profileInfo {
+  font-family: 'Oswald', sans-serif;
+  color: white;
+  font-size: 20px;
+  margin: 80px;
+
+ }
 #registerB {
   max-height: 100%;
 }
