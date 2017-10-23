@@ -10,7 +10,7 @@ myApp.controller('LoginController', function($http, $location, UserService) {
     vm.login = function() {
       console.log('LoginController -- login');
       if(vm.user.username === '' || vm.user.password === '') { //if entries are empty
-        vm.message = "Enter your username and password!";      //tells you to enter info
+        vm.message = "Enter your username and password";      //tells you to enter info
       } else {
         console.log('LoginController -- login -- sending to server...'); 
         $http.post('/', vm.user).then(function(response) { //if filled in...

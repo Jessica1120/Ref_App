@@ -2,23 +2,92 @@
   background-color: black;
 }
 
+.btn {
+  border-top: 1px solid #360530;
+  background: #d6a4d3;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#d6a4d3));
+  background: -webkit-linear-gradient(top, #ffffff, #d6a4d3);
+  background: -moz-linear-gradient(top, #ffffff, #d6a4d3);
+  background: -ms-linear-gradient(top, #ffffff, #d6a4d3);
+  background: -o-linear-gradient(top, #ffffff, #d6a4d3);
+  padding: 5px 10px;
+  margin: 20px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+  -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+  box-shadow: rgba(0,0,0,1) 0 1px 0;
+  text-shadow: rgba(0,0,0,.4) 0 1px 0;
+  color: #000000;
+  font-size: 14px;
+  font-family: 'Permanent Marker', cursive;
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+ .btn:hover {
+  border-top-color: #f53fa9;
+  background: #f53fa9;
+  color: #000000;
+ }
+ .btn:active {
+  border-top-color: #f53fa9;
+  background: #f53fa9;
+    }
+
+.col-md-5 {
+  color: white;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 20px;
+}
+
+.form-control {
+  background-color: #fff2fa;
+}
+.form-control:focus {
+  border-color: #f53fa9;
+  box-shadow: 4px 6px 6px;
+}
+
 #games {
   color: red;
 }
 
+.img-responsive {
+  max-height: 100%
+}
 #input {
   color: red;
 }
 
+.lead {
+font-size: 50px;
+text-decoration: underline;
+ }
+
+ .alert-danger {
+   background: #f53fa9;
+ }
+
 .links {
   color:  black;
+  margin: 30px;
 }
+
 
 .navbar {
   background-color: white;
+  color: black;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 20px;
+  text-align: right;
 }
 .profile {
   margin: 50px;
+}
+#registerB {
+  max-height: 100%;
 }
 #rosterpage {
   color: white
