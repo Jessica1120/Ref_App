@@ -5,12 +5,26 @@ myApp.controller('ProfileController', function(ProfileService) {
    
     vm.profileInfo = ProfileService.profileInfo; //object
 
-    vm.toggle = function () {
-      profile = !profile;
-      console.log(photo.see);
-  };
     vm.getProfile = function() {
       ProfileService.getProfile();
       console.log('profileInfo', ProfileService.profileInfo);
+
+     vm.updateProfile = function() {
+       var objToSend = {
+      derbyname:    vm.derbyNameIn,
+      league:       vm.leagueIn,
+      city:         vm.cityIn,
+      state:        vm.stIn,
+      games_history:    vm.gameHistoryIn,
+      email:            vm.emailIn,
+      certifications: vm.certsIn,
+      bio:          vm.bioIn,
+  }; //end object
+  // profile=!profile
+  console.log('obj', objToSend);
+  // ProfileService.updateProfile(objToSend); //pass object to service
+  
+}; //end addGame function
+
   }; //end getProfile function
 });//end ProfileController

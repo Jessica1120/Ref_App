@@ -1,7 +1,4 @@
-#addGames {
-  color: #f53fa9;
-  font-family: 'Permanent Marker', cursive;
-}
+
 
 #body {
   background-color: black;
@@ -61,6 +58,7 @@
 
 #gameIn {
   background-color: #fff2fa;
+  font-family: 'Permanent Marker', cursive;
 }
 #gameIn:focus {
   border-color: #f53fa9;
@@ -75,8 +73,8 @@
 }
 
 .lead {
-font-size: 50px;
-text-decoration: underline;
+  font-size: 50px;
+  text-decoration: underline;
  }
 
  .alert-danger {
@@ -102,6 +100,10 @@ text-decoration: underline;
   font-size: 20px;
   text-align: right;
 }
+.pinkMarker {
+  color: #f53fa9;
+  font-family: 'Permanent Marker', cursive;
+}
  #profileInfo {
   font-family: 'Oswald', sans-serif;
   color: white;
@@ -115,6 +117,38 @@ text-decoration: underline;
 #rosterpage {
   color: white
 }
+.saveButton{
+  border-top: 1px solid #360530;
+  background: #d6a4d3;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#d6a4d3));
+  background: -webkit-linear-gradient(top, #ffffff, #d6a4d3);
+  background: -moz-linear-gradient(top, #ffffff, #d6a4d3);
+  background: -ms-linear-gradient(top, #ffffff, #d6a4d3);
+  background: -o-linear-gradient(top, #ffffff, #d6a4d3);
+  border: 1px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+  -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+  box-shadow: rgba(0,0,0,1) 0 1px 0;
+  text-shadow: rgba(0,0,0,.4) 0 1px 0;
+  color: #000000;
+  font-size: 14px;
+  font-family: 'Permanent Marker', cursive;
+  text-decoration: none;
+  vertical-align: middle;
+}
+.saveButton:hover {
+  border-top-color: #f53fa9;
+  background: #f53fa9;
+  color: #000000;
+ }
+ .saveButton:active {
+  border-top-color: #f53fa9;
+  background: #f53fa9;
+    }
+
 #thisGame {
   color: white
 }
