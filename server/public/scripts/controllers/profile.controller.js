@@ -19,10 +19,9 @@ myApp.controller('ProfileController', function(ProfileService) {
       email:            vm.emailIn,
       certifications: vm.certsIn,
       bio:          vm.bioIn,
-  }; //end object
-  // profile=!profile
-  console.log('obj', objToSend);
-  // ProfileService.updateProfile(objToSend); //pass object to service
+  }; 
+    console.log('obj', objToSend);
+    ProfileService.updateProfile(objToSend); //pass object to service
   
 }; //end addGame function
 

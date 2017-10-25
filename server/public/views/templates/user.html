@@ -7,49 +7,75 @@
         </div>
 
         <div ng-controller="ProfileController as pc" ng-init="pc.getProfile()" id="profileInfo">
-        <div  class="col-sm-6">
-            <p ng-hide="derbyname" ng-click="derbyname=!derbyname">{{pc.profileInfo.data.derbyname}}</p>
-            <p ng-hide="!derbyname"> <input type=text placeholder="Derby Name" ng-model="pc.derbyNameIn" id="gameIn"></p>
-                <p ng-hide="!derbyname" ng-click="derbyname=!derbyname"><button type="button" class="saveButton" ng-click="pc.saveProfile()">Save</button></p>
-            </p>
-            <p ng-hide="league" ng-click="league=!league">{{pc.profileInfo.data.league}}</p>
-            <p ng-hide="!league">
-                <input type=text placeholder="League Affiliation" ng-model="pc.leagueIn" id="gameIn"></p>
-                <p ng-hide="!league" ng-click="league=!league"><button type="button" class="saveButton" ng-click="pc.saveProfile()">Save</button></p>
-            </p>
-            <p ng-hide="city" ng-click="city=!city">{{pc.profileInfo.data.city}}, {{pc.profileInfo.data.state}}</p>
-            <p ng-hide="!city">
-                <input type=text placeholder="City" ng-model="pc.cityIn" id="gameIn">
-                <input type=text placeholder="ST" ng-model="pc.stIn" id="gameIn"></p>
-                <p ng-hide="!city" ng-click="city=!city"><button type="button" class="saveButton" ng-click="pc.saveProfile()">Save</button></p>
-            </p>
-            <p ng-hide="history" ng-click="history=!history">{{pc.profileInfo.data.games_history}}</p>
-            <p ng-hide="!history">
-                <input type=text placeholder="Games History Link" ng-model="pc.gameHistoryIn" id="gameIn"></p>
-                <p ng-hide="!history" ng-click="history=!history"><button type="button" class="saveButton" ng-click="pc.saveProfile()">Save</button></p>
-            </p>
-            <p ng-hide="email" ng-click="email=!email">{{pc.profileInfo.data.email}}</p>
-            <p ng-hide="!email">
-                <input type=text placeholder="email" ng-model="pc.emailIn" id="gameIn"></p>
-                <p ng-hide="!email" ng-click="email=!email"><button type="button" class="saveButton" ng-click="pc.saveProfile()">Save</button></p>
-            </p>
-            <p ng-hide="cert" ng-click="cert=!cert">{{pc.profileInfo.data.certifications}}</p>
-            <p ng-hide="!cert">
-                <input type=text placeholder="Certifications" ng-model="pc.certsIn" id="gameIn"></p>
-                <p ng-hide="!cert" ng-click="cert=!cert"><button type="button" class="saveButton" ng-click="pc.saveProfile()">Save</button></p>
-            </p>
-            <p class ="pinkMarker">BIO:</p> <p ng-hide="bio" ng-click="bio=!bio">{{pc.profileInfo.data.bio}}</p>
-            <p ng-hide="!bio">
-                <input type=textbox placeholder="Bio" ng-model="pc.bioIn" id="gameIn"></p>
-                <p ng-hide="!bio" ng-click="bio=!bio"><button type="button" class="saveButton" ng-click="pc.saveProfile()">Save</button></p>
-            </p>
+            <div class="col-sm-6">
+                
+                <p ng-hide="derbyname" ng-click="derbyname=!derbyname">{{pc.profileInfo.data.derbyname}}</p>
+                <p ng-hide="!derbyname">
+                    <input type=text placeholder="Derby Name" ng-model="pc.derbyNameIn" class="gameIn">
+                </p>
+                <p ng-hide="!derbyname" ng-click="derbyname=!derbyname">
+                    <button type="button" class="saveButton" ng-click="pc.updateProfile()">Save</button>
+                </p>
+                
             
-        </div>
+                <p ng-hide="league" ng-click="league=!league">{{pc.profileInfo.data.league}}</p>
+                <p ng-hide="!league">
+                    <input type=text placeholder="League Affiliation" ng-model="pc.leagueIn" class="gameIn">
+                </p>
+                <p ng-hide="!league" ng-click="league=!league">
+                    <button type="button" class="saveButton" ng-click="pc.updateProfile()">Save</button>
+                </p>
+               
+                <p ng-hide="city" ng-click="city=!city">{{pc.profileInfo.data.city}}, {{pc.profileInfo.data.state}}</p>
+                <p ng-hide="!city">
+                    <input type=text placeholder="City" ng-model="pc.cityIn" class="gameIn">
+                    <input type=text placeholder="ST" ng-model="pc.stIn" class="gameIn">
+                </p>
+                <p ng-hide="!city" ng-click="city=!city">
+                    <button type="button" class="saveButton" ng-click="pc.updateProfile()">Save</button>
+                </p>
+                
+                <p ng-hide="history" ng-click="history=!history">{{pc.profileInfo.data.games_history}}</p>
+                <p ng-hide="!history">
+                    <input type=text placeholder="Games History Link" ng-model="pc.gameHistoryIn" class="gameIn">
+                </p>
+                <p ng-hide="!history" ng-click="history=!history">
+                    <button type="button" class="saveButton" ng-click="pc.updateProfile()">Save</button>
+                </p>
+                
+                <p ng-hide="email" ng-click="email=!email">{{pc.profileInfo.data.email}}</p>
+                <p ng-hide="!email">
+                    <input type=text placeholder="email" ng-model="pc.emailIn" class="gameIn">
+                </p>
+                <p ng-hide="!email" ng-click="email=!email">
+                    <button type="button" class="saveButton" ng-click="pc.updateProfile()">Save</button>
+                </p>
+                
+                <p ng-hide="cert" ng-click="cert=!cert">{{pc.profileInfo.data.certifications}}</p>
+                <p ng-hide="!cert">
+                    <input type=text placeholder="Certifications" ng-model="pc.certsIn" class="gameIn">
+                </p>
+                <p ng-hide="!cert" ng-click="cert=!cert">
+                    <button type="button" class="saveButton" ng-click="pc.updateProfile()">Save</button>
+                </p>
+               
+                <p class="pinkMarker">BIO:</p>
+                <p ng-hide="bio" ng-click="bio=!bio">{{pc.profileInfo.data.bio}}</p>
+                <p ng-hide="!bio">
+                    <input type=textbox placeholder="Bio" ng-model="pc.bioIn" class="gameIn">
+                </p>
+                <p ng-hide="!bio" ng-click="bio=!bio">
+                    <button type="button" class="saveButton" ng-click="pc.updateProfile()">Save</button>
+                </p>
+            </div>
         </div>
     </section>
-</div>
-    <section ng-controller="GamesController as gc" class="container">
-        <h2 class ="pinkMarker" ng-init="gc.getGames()">Add Games</h2>
+    <!-- <div class="col-sm-4">
+            <img src="https://image.ibb.co/fHP5km/zeeb.jpg" class="img-responsive">  
+    </div> -->
+
+    <section ng-controller="GamesController as gc" class="container-fluid">
+        <h2 class="pinkMarker" ng-init="gc.getGames()">Add Games</h2>
         <div>
             <input type=date placeholder="Date" ng-model="gc.dateIn" id="gameIn">
             <input type=text placeholder="City" ng-model="gc.cityIn" id="gameIn">
@@ -58,12 +84,12 @@
             <input type=text placeholder="Team 2" ng-model="gc.team2In" id="gameIn">
             <button type="button" class="btn btn-primary" ng-click="gc.addGame()">Add</button>
         </div>
-        <div>
+        <div ="container-fluid" id="gameList" >
             <p ng-repeat="game in gc.gameList.data">
                 <a href="#/roster" ng-click="gc.sendThisGame(game)">
-                    {{game.date | date:'MMMM d, yyyy'}} {{game.city}} {{game.state}} {{game.team1}} v {{game.team2}}
+                    {{game.date | date:'MMMM d, yyyy'}} {{game.city}}, {{game.state}} {{game.team1}} v {{game.team2}}
                 </a>
             </p>
         </div>
     </section>
-    </div>
+</div> <!-- end page-->

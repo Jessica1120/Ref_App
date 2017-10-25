@@ -1,7 +1,10 @@
 
 
 #body {
-  background-color: black;
+  background: #000000;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
 }
 
 .btn {
@@ -56,22 +59,24 @@
   box-shadow: 4px 6px 6px;
 }
 
-#gameIn {
+.gameIn {
   background-color: #fff2fa;
   font-family: 'Permanent Marker', cursive;
+  color: black
 }
-#gameIn:focus {
+.gameIn:focus {
   border-color: #f53fa9;
   box-shadow: 4px 6px 6px;
 }
 
+#gameList {
+  font-family: 'Oswald', sans-serif;
+  color: rgb(49, 49, 230);
+  font-size: 20px;
+}
 .img-responsive {
   max-height: 100%
 }
-#input {
-  color: red;
-}
-
 .lead {
   font-size: 50px;
   text-decoration: underline;
@@ -114,8 +119,16 @@
 #registerB {
   max-height: 100%;
 }
-#rosterpage {
-  color: white
+#rosterGame {
+  color: white;
+  font-size: 20px;
+  margin: 80px;
+  font-family: 'Permanent Marker', cursive;
+}
+#rosterOutput{
+  font-family: 'Oswald', sans-serif;
+  color: white;
+  font-size: 20px;
 }
 .saveButton{
   border-top: 1px solid #360530;
@@ -150,7 +163,8 @@
     }
 
 #thisGame {
-  color: white
+  color: white;
+  padding: 20px;
 }
 #welcome {
   color:  white;

@@ -13,5 +13,16 @@ myApp.service('ProfileService', function($http, $location){
             self.profileInfo.data = (res.data);
         }); //end then
     }; //end getProfileInfo function
+
+    self.updateProfile = function(objToSend) {
+        $http({
+            method: 'PUT',
+            url:    '/profile',
+            data:   objToSend
+        }).then(function(res) {
+            console.log('update Profile response:', res );
+            self.getProfile();
+        }); //end then
+    }; //end addGame
     
 }); //end ProfileService
