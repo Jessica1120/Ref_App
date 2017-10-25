@@ -5,10 +5,11 @@
     </div>
     <div class="container" ng-init="rc.getRefs()">
         <div id="input">
-        Add ref: <select ng-model="rc.derbyNameIn" >
-                    <option ng-repeat="ref in rc.allRefs.data">
+        Add ref: <select ng-model="rc.derbyNameIn" value = "ref.derbyname">
+                    <option  ng-repeat="ref in rc.allRefs.data">
                     {{ref.derbyname}}</option>
                 </select>
+                <!-- Name: <input type="text" ng-model="rc.derbyNameIn"  class="gameIn"> -->
                 HR:<input type="number" ng-model="rc.hrIn"  class="gameIn">
                 IPR:<input type="number" ng-model="rc.iprIn" class="gameIn">
                 JR:<input type="number" ng-model="rc.jrIn" class="gameIn">
@@ -35,7 +36,7 @@
                     <p>OPR: {{rc.roster[5].derbyname}}</p>
                     <p>OPR: {{rc.roster[6].derbyname}}</p>
                     <p>ALT: {{rc.roster[7].derbyname}}</p>
-                    <div id="buttons">
+                    <div id="buttons" ng-click="rc.getThisGame()">
                         <button type="button" class="btn" ng-click="rc.saveRoster()">Save</button>
                     </div>
             </div>
@@ -44,13 +45,13 @@
         <div class="col-md-6">
             <h2>Final Roster</h2>
             <p>HR: {{rc.thisGame.data[0].headref_name}}</p>
-            <p>IPR: {{rc.thisGame.data[0].ipr}}</p>
-            <p>JR: {{rc.thisGame.data[0].jr1}}</p>
-            <p>JR: {{rc.thisGame.data[0].jr2}}</p>
-            <p>OPR: {{rc.thisGame.data[0].opr1}}</p>
-            <p>OPR: {{rc.thisGame.data[0].opr2}}</p>
-            <p>OPR: {{rc.thisGame.data[0].opr3}}</p>
-            <p>OPR: {{rc.thisGame.data[0].alt}}</p>
+            <p>IPR: {{rc.thisGame.data[0].ipr_name}}</p>
+            <p>JR: {{rc.thisGame.data[0].jr1_name}}</p>
+            <p>JR: {{rc.thisGame.data[0].jr2_name}}</p>
+            <p>OPR: {{rc.thisGame.data[0].opr1_name}}</p>
+            <p>OPR: {{rc.thisGame.data[0].opr2_name}}</p>
+            <p>OPR: {{rc.thisGame.data[0].opr3_name}}</p>
+            <p>OPR: {{rc.thisGame.data[0].alt_name}}</p>
         </div>
     </div>
 </section>

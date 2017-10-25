@@ -31,8 +31,8 @@ router.put('/', function (req, res) {
                 console.log(connectionError);
                 res.sendStatus(500);
             } else {
-                var pQuery = 'UPDATE games SET headref=(SELECT (id) FROM users WHERE derbyname=$1), ipr=(SELECT (id) FROM users WHERE derbyname=$2), jr1=(SELECT (id) FROM users WHERE derbyname=$3), jr2=(SELECT (id) FROM users WHERE derbyname=$4), opr1=(SELECT (id) FROM users WHERE derbyname=$5), opr2=(SELECT (id) FROM users WHERE derbyname=$6), opr3=(SELECT (id) FROM users WHERE derbyname=$7) WHERE id=$8'
-                var valueArray = [roster.headref, roster.ipr, roster.jr1, roster.jr2, roster.opr1, roster.opr2, roster.opr3, roster.id];
+                var pQuery = 'UPDATE games SET headref=(SELECT (id) FROM users WHERE derbyname=$1), headref_name = $1, ipr=(SELECT (id) FROM users WHERE derbyname=$2), ipr_name = $2, jr1=(SELECT (id) FROM users WHERE derbyname=$3), jr1_name = $3, jr2=(SELECT (id) FROM users WHERE derbyname=$4), jr2_name= $4, opr1=(SELECT (id) FROM users WHERE derbyname=$5), opr1_name=$5, opr2=(SELECT (id) FROM users WHERE derbyname=$6), opr2_name=$6, opr3=(SELECT (id) FROM users WHERE derbyname=$7), opr3_name=$7, alt=(SELECT (id) FROM users WHERE derbyname=$8), alt_name=$8 WHERE id=$9' 
+                var valueArray = [roster.headref, roster.ipr, roster.jr1, roster.jr2, roster.opr1, roster.opr2, roster.opr3, roster.alt, roster.id];
                 console.log('roster.headref', roster.headref)
                 console.log('valueArray:', valueArray)
                 client.query(pQuery, valueArray, function (queryError, resultObj) {
