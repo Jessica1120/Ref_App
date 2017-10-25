@@ -9,9 +9,11 @@
                     <option ng-repeat="ref in rc.allRefs.data">
                     {{ref.derbyname}}</option>
                 </select>
-                <input type="number" ng-model="rc.hrIn"  class="gameIn">
-                <input type="number" ng-model="rc.iprIn" class="gameIn">
-                <input type="number" ng-model="rc.jr1In" class="gameIn">
+                HR:<input type="number" ng-model="rc.hrIn"  class="gameIn">
+                IPR:<input type="number" ng-model="rc.iprIn" class="gameIn">
+                JR:<input type="number" ng-model="rc.jrIn" class="gameIn">
+                OPR:<input type="number" ng-model="rc.oprIn" class="gameIn">
+                ALT:<input type="number" ng-model="rc.altIn" class="gameIn">
                 <button type="button" class="btn" ng-click="rc.addRef()">Add Ref</button>     
         </div>
     </div>    
@@ -29,6 +31,11 @@
                     <p>HR: {{rc.roster[0].derbyname}}</p>
                     <p>IPR: {{rc.roster[1].derbyname}}</p> 
                     <p>JR: {{rc.roster[2].derbyname}}</p>
+                    <p>JR: {{rc.roster[3].derbyname}}</p>
+                    <p>OPR: {{rc.roster[4].derbyname}}</p>
+                    <p>OPR: {{rc.roster[5].derbyname}}</p>
+                    <p>OPR: {{rc.roster[6].derbyname}}</p>
+                    <p>ALT: {{rc.roster[7].derbyname}}</p>
                     <div id="buttons">
                         <button type="button" class="btn" ng-click="rc.saveRoster()">Save</button>
                     </div>
@@ -40,7 +47,11 @@
             <p>HR: {{rc.thisGame.data[0].headref_name}}</p>
             <p>IPR: {{rc.thisGame.data[0].ipr}}</p>
             <p>JR: {{rc.thisGame.data[0].jr1}}</p>
-      
+            <p>JR: {{rc.thisGame.data[0].jr2}}</p>
+            <p>OPR: {{rc.thisGame.data[0].opr1}}</p>
+            <p>OPR: {{rc.thisGame.data[0].opr2}}</p>
+            <p>OPR: {{rc.thisGame.data[0].opr3}}</p>
+            <p>OPR: {{rc.thisGame.data[0].alt}}</p>
         </div>
     </div>
 </section>
