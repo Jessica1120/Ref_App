@@ -6,6 +6,8 @@ myApp.service('RosterService', function($http, $location){
 
     self.allRefs = {data: []} //object from getRefs function
 
+    self.updatedRoster = {data: []} //object from updateRoster function
+
     self.getThisGame = function() {
         $http({
             method: 'GET',
@@ -37,15 +39,16 @@ myApp.service('RosterService', function($http, $location){
         }); //end then
     }; //end saveGame 
 
-    // self.getUpdatedGame = function() {
-    //     $http({
-    //         method: 'GET',
-    //         url:    '/thisGame',
-    //     }).then(function(res) {
-    //         self.thisGame.data = (res.data);
-    //         console.log('RS getRefs', self.updatedGame.data) //figure out how to get this.
-    //     }); // end then
-    // }; //end getRefs function
+    self.updateRoster = function(rosterObj) {
+        console.log('updateRoster Running', rosterObj)
+        $http({
+            method: 'PUT',
+            url:    '/updateRef',
+            data: rosterObj
+        }).then(function(res) {
+            console.log('RS updateRefs', res) 
+        }); // end then
+    }; //end updateRoster function
 }); //end Roster Service    
 
     

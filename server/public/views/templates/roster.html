@@ -5,8 +5,8 @@
     </div>
     <div class="container" ng-init="rc.getRefs()">
         <div id="input">
-        Add ref: <select ng-model="rc.derbyNameIn" value = "ref.derbyname">
-                    <option  ng-repeat="ref in rc.allRefs.data">
+        Add ref: <select ng-model="rc.derbyNameIn" value = "ref.derbyname" class="selectInput">
+                    <option  ng-repeat="ref in rc.allRefs.data" >
                     {{ref.derbyname}}</option>
                 </select>
                 <!-- Name: <input type="text" ng-model="rc.derbyNameIn"  class="gameIn"> -->
@@ -26,33 +26,196 @@
                     </ul>
                     <button type="button" class="btn"ng-click="rc.findRoster()">Generate</button>
             </div>    
-            <div>
+            <div> <!--Suggested Roster -->
                 <h3>Suggested Roster</h3>
-                    <p>HR: {{rc.roster[0].derbyname}}</p>
-                    <p>IPR: {{rc.roster[1].derbyname}}</p> 
-                    <p>JR: {{rc.roster[2].derbyname}}</p>
-                    <p>JR: {{rc.roster[3].derbyname}}</p>
-                    <p>OPR: {{rc.roster[4].derbyname}}</p>
-                    <p>OPR: {{rc.roster[5].derbyname}}</p>
-                    <p>OPR: {{rc.roster[6].derbyname}}</p>
-                    <p>ALT: {{rc.roster[7].derbyname}}</p>
+                <!--HR-->
+                    <p ng-hide="hr" ng-click="hr=!hr">HR: {{rc.roster[0].derbyname}}</p>
+                <p ng-hide="!hr">
+                    HR: <select ng-model="rc.derbyNameIn" class="selectInput">
+                    <option  ng-repeat="ref in rc.allRefs.data">
+                    {{ref.derbyname}}</option>
+                    </select>
+                </p>
+                <p ng-hide="!hr" ng-click="hr=!hr">
+                    <button type="button" class="saveButton" ng-click="rc.saveHr()">Save</button>
+                </p>
+                <!--IPR-->
+                <p ng-hide="ipr">IPR: {{rc.roster[1].derbyname}}</p>
+                <p ng-hide="!ipr">
+                    IPR: <select ng-model="rc.derbyNameIn1">
+                    <option  ng-repeat="ref in rc.allRefs.data">
+                    {{ref.derbyname}}</option>
+                    </select>
+                </p>
+                <p ng-hide="!ipr" ng-click="ipr=!ipr">
+                    <button type="button" class="saveButton" ng-click="rc.saveIpr()">Change</button>
+                </p>
+                <!--JR1-->   
+                <p ng-hide="jr1" ng-click="jr1=!jr1">JR: {{rc.roster[2].derbyname}}</p>
+                <p ng-hide="!jr1">
+                    JR: <select ng-model="rc.derbyNameIn">
+                    <option  ng-repeat="ref in rc.allRefs.data">
+                    {{ref.derbyname}}</option>
+                    </select>
+                </p>
+                <p ng-hide="!jr1" ng-click="jr1=!jr1">
+                    <button type="button" class="saveButton" ng-click="rc.saveJr1()">Save</button>
+                </p> 
+                <!--JR2-->
+                <p ng-hide="jr2" ng-click="jr2=!jr2">JR: {{rc.roster[3].derbyname}}</p>
+                <p ng-hide="!jr2">
+                    JR: <select ng-model="rc.derbyNameIn">
+                    <option  ng-repeat="ref in rc.allRefs.data">
+                    {{ref.derbyname}}</option>
+                    </select>
+                </p>
+                <p ng-hide="!jr2" ng-click="jr2=!jr2">
+                    <button type="button" class="saveButton" ng-click="rc.saveJr2()">Save</button>
+                </p> 
+                <!--OPR1-->
+                <p ng-hide="opr1" ng-click="opr1=!opr1">OPR: {{rc.roster[4].derbyname}}</p>
+                <p ng-hide="!opr1">
+                    OPR: <select ng-model="rc.derbyNameIn">
+                    <option  ng-repeat="ref in rc.allRefs.data">
+                    {{ref.derbyname}}</option>
+                    </select>
+                </p>
+                <p ng-hide="!opr1" ng-click="opr1=!opr1">
+                    <button type="button" class="saveButton" ng-click="rc.saveOpr1()">Save</button>
+                </p>  
+                <!--OPR2-->
+                <p ng-hide="opr2" ng-click="opr2=!opr2">OPR: {{rc.roster[5].derbyname}}</p>
+                <p ng-hide="!opr2">
+                    OPR: <select ng-model="rc.derbyNameIn">
+                    <option  ng-repeat="ref in rc.allRefs.data">
+                    {{ref.derbyname}}</option>
+                    </select>
+                </p>
+                <p ng-hide="!opr2" ng-click="opr2=!opr2">
+                    <button type="button" class="saveButton" ng-click="rc.saveOpr2()">Save</button>
+                </p> 
+                <!--OPR3-->
+                <p ng-hide="opr3" ng-click="opr3=!opr3">OPR: {{rc.roster[6].derbyname}}</p>
+                <p ng-hide="!opr3">
+                    OPR: <select ng-model="rc.derbyNameIn">
+                    <option  ng-repeat="ref in rc.allRefs.data">
+                    {{ref.derbyname}}</option>
+                    </select>
+                </p>
+                <p ng-hide="!opr3" ng-click="opr3=!opr3">
+                    <button type="button" class="saveButton" ng-click="rc.saveOpr3()">Save</button>
+                <!--Alt-->
+                <p ng-hide="alt" ng-click="alt=!alt">ALT: {{rc.roster[7].derbyname}}</p>
+                <p ng-hide="!alt">
+                    ALT: <select ng-model="rc.derbyNameIn">
+                    <option  ng-repeat="ref in rc.allRefs.data">
+                    {{ref.derbyname}}</option>
+                    </select>
+                </p>
+                <p ng-hide="!alt" ng-click="alt=!alt">
+                    <button type="button" class="saveButton" ng-click="rc.saveAlt()">Save</button>
+                
+
                     <div id="buttons" ng-click="rc.getThisGame()">
-                        <button type="button" class="btn" ng-click="rc.saveRoster()">Save</button>
+                       <button type="button" class="btn" ng-click="rc.saveRoster()">Save</button>
                     </div>
             </div>
         
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6"> <!---final Roster -->
             <h2>Final Roster</h2>
-            <p>HR: {{rc.thisGame.data[0].headref_name}}</p>
-            <p>IPR: {{rc.thisGame.data[0].ipr_name}}</p>
-            <p>JR: {{rc.thisGame.data[0].jr1_name}}</p>
-            <p>JR: {{rc.thisGame.data[0].jr2_name}}</p>
-            <p>OPR: {{rc.thisGame.data[0].opr1_name}}</p>
-            <p>OPR: {{rc.thisGame.data[0].opr2_name}}</p>
-            <p>OPR: {{rc.thisGame.data[0].opr3_name}}</p>
-            <p>OPR: {{rc.thisGame.data[0].alt_name}}</p>
+             <!--HR-->
+             <p ng-hide="hrU" ng-click="hrU=!hrU">HR: {{rc.thisGame.data[0].headref_name}}</p>
+             <p ng-hide="!hrU">
+                 HR: <select ng-model="rc.hrNameIn" class="selectInput">
+                 <option  ng-repeat="ref in rc.allRefs.data">
+                 {{ref.derbyname}}</option>
+                 </select>
+             </p>
+             <p ng-hide="!hrU" ng-click="hrU=!hrU">
+                 <button type="button" class="saveButton" ng-click="rc.updateRoster()">Save</button>
+             </p>
+             <!--IPR-->
+             <p ng-hide="iprU" ng-click="iprU=!iprU">IPR: {{rc.thisGame.data[0].ipr_name}}</p>
+             <p ng-hide="!iprU">
+                 IPR: <select ng-model="rc.iprNameIn" class="selectInput">
+                 <option  ng-repeat="ref in rc.allRefs.data">
+                 {{ref.derbyname}}</option>
+                 </select>
+             </p>
+             <p ng-hide="!iprU" ng-click="iprU=!iprU">
+                 <button type="button" class="saveButton" ng-click="rc.updateRoster()">Save</button>
+             </p>
+             <!--JR1-->   
+             <p ng-hide="jr1U" ng-click="jr1U=!jr1U">JR: {{rc.thisGame.data[0].jr1_name}}</p>
+             <p ng-hide="!jr1U">
+                 JR: <select ng-model="rc.jr1NameIn">
+                 <option  ng-repeat="ref in rc.allRefs.data">
+                 {{ref.derbyname}}</option>
+                 </select>
+             </p>
+             <p ng-hide="!jr1U" ng-click="jr1U=!jr1U">
+                 <button type="button" class="saveButton" ng-click="rc.updateRoster()">Save</button>
+             </p> 
+             <!--JR2-->
+             <p ng-hide="jr2U" ng-click="jr2U=!jr2U">JR: {{rc.thisGame.data[0].jr2_name}}</p>
+             <p ng-hide="!jr2U">
+                 JR: <select ng-model="rc.jr2NameIn">
+                 <option  ng-repeat="ref in rc.allRefs.data">
+                 {{ref.derbyname}}</option>
+                 </select>
+             </p>
+             <p ng-hide="!jr2U" ng-click="jr2U=!jr2U">
+                 <button type="button" class="saveButton" ng-click="rc.updateRoster()">Save</button>
+             </p> 
+             <!--OPR1-->
+             <p ng-hide="opr1U" ng-click="opr1U=!opr1U">OPR: {{rc.thisGame.data[0].opr1_name}}</p>
+             <p ng-hide="!opr1U">
+                 OPR: <select ng-model="rc.opr1NameIn">
+                 <option  ng-repeat="ref in rc.allRefs.data">
+                 {{ref.derbyname}}</option>
+                 </select>
+             </p>
+             <p ng-hide="!opr1U" ng-click="opr1U=!opr1U">
+                 <button type="button" class="saveButton" ng-click="rc.updateRoster()">Save</button>
+             </p> 
+             <!--OPR2-->
+             <p ng-hide="opr2U" ng-click="opr2U=!opr2U">OPR: {{rc.thisGame.data[0].opr2_name}}</p>
+             <p ng-hide="!opr2U">
+                 OPR: <select ng-model="rc.opr2NameIn">
+                 <option  ng-repeat="ref in rc.allRefs.data">
+                 {{ref.derbyname}}</option>
+                 </select>
+             </p>
+             <p ng-hide="!opr2U" ng-click="opr2U=!opr2U">
+                 <button type="button" class="saveButton" ng-click="rc.updateRoster()">Save</button>
+             </p> 
+             <!--OPR3-->
+             <p ng-hide="opr3U" ng-click="opr3U=!opr3U">OPR: {{rc.thisGame.data[0].opr3_name}}</p>
+             <p ng-hide="!opr3U">
+                 OPR: <select ng-model="rc.opr3NameIn">
+                 <option  ng-repeat="ref in rc.allRefs.data">
+                 {{ref.derbyname}}</option>
+                 </select>
+             </p>
+             <p ng-hide="!opr3U" ng-click="opr3U=!opr3U">
+                 <button type="button" class="saveButton" ng-click="rc.updateRoster()">Save</button>
+             <!--Alt-->
+             <p ng-hide="altU" ng-click="altU=!altU">ALT: {{rc.thisGame.data[0].alt_name}}</p>
+             <p ng-hide="!altU">
+                 ALT: <select ng-model="rc.altNameIn">
+                 <option  ng-repeat="ref in rc.allRefs.data">
+                 {{ref.derbyname}}</option>
+                 </select>
+             </p>
+             <p ng-hide="!altU" ng-click="altU=!altU">
+                 <button type="button" class="saveButton" ng-click="rc.updateRoster()">Save</button>
+                 
+                 <div id="buttons" ng-click="rc.getThisGame()">
+                     <button type="button" class="btn" ng-click="rc.saveRoster()">Save</button>
+                 </div>
         </div>
     </div>
+    <button ng-click="rc.testFunction()">Test</button>
 </section>
         

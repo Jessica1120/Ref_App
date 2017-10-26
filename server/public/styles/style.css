@@ -152,6 +152,7 @@
   text-decoration: none;
   vertical-align: middle;
 }
+
 .saveButton:hover {
   border-top-color: #f53fa9;
   background: #f53fa9;
@@ -162,6 +163,9 @@
   background: #f53fa9;
     }
 
+.selectInput {
+  color: black;
+}
 #thisGame {
   color: white;
   padding: 20px;
