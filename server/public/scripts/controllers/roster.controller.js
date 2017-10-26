@@ -1,22 +1,19 @@
 myApp.controller('RosterController', function (RosterService) {
     console.log('RosterController created');
     var vm = this;
-
+    var x = false;
+   
     vm.thisGame = RosterService.thisGame; // object for getThisGame function
 
     vm.allRefs = RosterService.allRefs; // object for getRefs function
 
     vm.refArray = []; // pushed from addRef
-    vm.testArray = []
+    vm.testArray = [];
 
     vm.roster = [];// final roster
 
-    // var x = false;
+   
 
-    // vm.testFunction = function () {
-    //     x = ! x;
-    //     console.log(x);
-    // }
 
     //client side only functions
     vm.addRef = function () {
@@ -39,37 +36,53 @@ myApp.controller('RosterController', function (RosterService) {
 
     //generates roster
     vm.findRoster = function () {
-  
+        x = ! x;
+        console.log(x)
+        if (x) {
+            console.log ('x is true');
+            tempArray1 = vm.refArray
+            tempArray2 = vm.testArray
+        } else {
+            console.log ('x is false');
+            tempArray1 = vm.testArray
+            tempArray2 = vm.refArray
+        };
+        console.log ('tempArray1:', tempArray1,)
+        console.log ( 'tempArray2:',  tempArray2)
+        console.log('vm.refArray', vm.refArray)
+        console.log('vm.testArray', vm.testArray)
+        
         vm.findHr = function () {
             console.log('findHr is running')
             tempHr = []
-            for (let i = 0; i < vm.refArray.length; i++) {
-                if (3 <= vm.refArray[i].hrRate) {
-                    tempHr.push(vm.refArray[i])
+            for (let i = 0; i < tempArray1.length; i++) {
+                if (3 <= tempArray1[i].hrRate) {
+                    tempHr.push(tempArray1[i])
                 }//end 'if' statement
             }//end for loop
             if (1 > tempHr.length) {
-                for (let i = 0; i < vm.refArray.length; i++) {
-                    if (2 == vm.refArray[i].hrRate) {
-                        tempHr.push(vm.refArray[i])
+                for (let i = 0; i < tempArray1.length; i++) {
+                    if (2 == tempArray1[i].hrRate) {
+                        tempHr.push(tempArray1[i])
                     }//end 'if' statement
                 }//end for loop
             } //end if 1>
             if (1 > tempHr.length) {
-                for (let i = 0; i < vm.refArray.length; i++) {
-                    if (1 == vm.refArray[i].hrRate) {
-                        tempHr.push(vm.refArray[i])
+                for (let i = 0; i < tempArray1.length; i++) {
+                    if (1 == tempArray1[i].hrRate) {
+                        tempHr.push(tempArray1[i])
                     }//end 'if' statement
                 }//end for loop
             } //end if 1>
+           
             var assigned1 = tempHr[Math.floor(Math.random() * tempHr.length)]
-            var assigned2 = vm.refArray.indexOf(assigned1);
-            vm.roster.splice(0, 0, assigned1);
-
-            vm.remove = function (refArray, assigned1) {
-                vm.refArray.splice(assigned2, 1);
-            }
-            vm.remove();
+            var assigned2 = tempArray1.indexOf(assigned1);
+            vm.roster.splice(0, 1, assigned1);
+            tempArray2.push(assigned1);
+            console.log('assigned1', assigned1);
+            console.log('assigned2', assigned2)
+                tempArray1.splice(assigned2, 1);
+       
             console.log('findHr is done')
             vm.findIpr();
         } //end findHR function
@@ -77,147 +90,160 @@ myApp.controller('RosterController', function (RosterService) {
         vm.findIpr = function () {
             console.log('findIpr is running')
             tempHr = []
-            for (let i = 0; i < vm.refArray.length; i++) {
-                if (3 <= vm.refArray[i].iprRate) {
-                    tempHr.push(vm.refArray[i])
+            console.log('tempHr', tempHr);
+            for (let i = 0; i < tempArray1.length; i++) {
+                if (3 <= tempArray1[i].iprRate) {
+                    tempHr.push(tempArray1[i])
                 }//end 'if' statement
             }//end for loop
             if (1 > tempHr.length) {
-                for (let i = 0; i < vm.refArray.length; i++) {
-                    if (2 == vm.refArray[i].iprRate) {
-                        tempHr.push(vm.refArray[i])
+                for (let i = 0; i < tempArray1.length; i++) {
+                    if (2 == tempArray1[i].iprRate) {
+                        tempHr.push(tempArray1[i])
                     }//end 'if' statement
                 }//end for loop
             } //end if 1>
             if (1 > tempHr.length) {
-                for (let i = 0; i < vm.refArray.length; i++) {
-                    if (1 == vm.refArray[i].iprRate) {
-                        tempHr.push(vm.refArray[i])
+                for (let i = 0; i < tempArray1.length; i++) {
+                    if (1 == tempArray1[i].iprRate) {
+                        tempHr.push(tempArray1[i])
                     }//end 'if' statement
                 }//end for loop
             } //end if 1>
+            
+            console.log('tempArray1',tempArray1)
+                console.log(' RefArray ', vm.refArray)
+                    console.log('ROSTER', vm.roster)
             var assigned1 = tempHr[Math.floor(Math.random() * tempHr.length)]
-            var assigned2 = vm.refArray.indexOf(assigned1);
-
-            vm.roster.splice(1, 0, assigned1);
-
-            vm.remove = function (refArray, assigned1) {
-                vm.refArray.splice(assigned2, 1);
-            } //end remove function
-            vm.remove();
+            var assigned2 = tempArray1.indexOf(assigned1);
+            console.log('assigned1', assigned1);
+            console.log('assigned2', assigned2)
+            vm.roster.splice(1, 1, assigned1);
+            
+            tempArray1.splice(assigned2, 1);
+            //end remove function
+            tempArray2.push(assigned1);
+            console.log('temparray2', tempArray2)
+            tempHr = []
+            console.log('tempHr end', tempHr)
             console.log('findIpr is done.')
-            // vm.findJrs();
+            vm.findJrs();
         } //end findipR function
+       
+       
+        vm.findJrs = function () {
+            console.log('findJrs is running')
+            tempHr = []
+            for (let i = 0; i < tempArray1.length; i++) {
+                if (3 <= tempArray1[i].jrRate) {
+                    tempHr.push(tempArray1[i])
+                }//end 'if' statement
+            }//end for loop
+            if (2 > tempHr.length) {
+                for (let i = 0; i < tempArray1.length; i++) {
+                    if (2 == tempArray1[i].jrRate) {
+                        tempHr.push(tempArray1[i])
+                    }//end 'if' statement
+                }//end for loop
+            } //end if 1>
+            if (2 > tempHr.length) {
+                for (let i = 0; i < tempArray1.length; i++) {
+                    if (1 == tempArray1[i].hrRate) {
+                        tempHr.push(tempArray1[i])
+                    }//end 'if' statement
+                }//end for loop
+            } //end if 1>
+            console.log('tempArray1 after Jr loop', tempArray1);
+            vm.shuffle = function () {
+                console.log('shuffle tempArray1', tempArray1)
+            
+            
+                var currentIndex = tempArray1.length, tempVal, randomIndex
+                while (0 !== currentIndex) {
+                    randomIndex = Math.floor(Math.random() * currentIndex);
+                    currentIndex -= 1;
+                    // And swap it with the current element.
+                    tempVal = tempArray1[currentIndex];
+                    tempArray1[currentIndex] = tempArray1[randomIndex];
+                    tempArray1[randomIndex] = tempVal;
+                }//end while loop
+            }//end shuffle
+            vm.shuffle();
+            var jr1 = tempArray1[0]
+            var jr2 = tempArray1[1];
+            vm.roster.splice(2, 1, jr1);
+            vm.roster.splice(3, 1, jr2);
+            tempArray1.splice(jr1, 1);
+            tempArray1.splice(jr2, 1);
+            tempArray2.push(jr1, jr2);
+           
+            console.log('jrs', jr1, jr2)
+            console.log('findJrs is done')
+            vm.findOprs();
+        } //end findJRs function
 
-        // vm.findJrs = function () {
-        //     console.log('findJrs is running')
-        //     tempHr = []
-        //     for (let i = 0; i < vm.refArray.length; i++) {
-        //         if (3 <= vm.refArray[i].jrRate) {
-        //             tempHr.push(vm.refArray[i])
-        //         }//end 'if' statement
-        //     }//end for loop
-        //     if (2 > tempHr.length) {
-        //         for (let i = 0; i < vm.refArray.length; i++) {
-        //             if (2 == vm.refArray[i].jrRate) {
-        //                 tempHr.push(vm.refArray[i])
-        //             }//end 'if' statement
-        //         }//end for loop
-        //     } //end if 1>
-        //     if (2 > tempHr.length) {
-        //         for (let i = 0; i < vm.refArray.length; i++) {
-        //             if (1 == vm.refArray[i].hrRate) {
-        //                 tempHr.push(vm.refArray[i])
-        //             }//end 'if' statement
-        //         }//end for loop
-        //     } //end if 1>
+        vm.findOprs = function () {
+            console.log('findOprs is running')
+            tempHr = []
+            for (let i = 0; i < tempArray1.length; i++) {
+                if (3 <= tempArray1[i].oprRate) {
+                    tempHr.push(tempArray1[i])
+                }//end 'if' statement
+            }//end for loop
+            if (3 > tempHr.length) {
+                for (let i = 0; i < tempArray1.length; i++) {
+                    if (2 == tempArray1[i].oprRate) {
+                        tempHr.push(tempArray1[i])
+                    }//end 'if' statement
+                }//end for loop
+            } //end if 3/2
+            if (3 > tempHr.length) {
+                for (let i = 0; i < tempArray1.length; i++) {
+                    if (1 == tempArray1[i].oprRate) {
+                        tempHr.push(tempArray1[i])
+                    }//end 'if' statement
+                }//end for loop
+            } //end if 3/1
+            vm.shuffle = function () {
+                console.log('shuffle')
+                var currentIndex = tempArray1.length, tempVal, randomIndex
+                while (0 !== currentIndex) {
+                    randomIndex = Math.floor(Math.random() * currentIndex);
+                    currentIndex -= 1;
+                    // And swap it with the current element.
+                    tempVal = tempArray1[currentIndex];
+                    tempArray1[currentIndex] = tempArray1[randomIndex];
+                    tempArray1[randomIndex] = tempVal;
+                }//end while loop
+                return tempArray1;
+            }//end shuffle
+            vm.shuffle();
+            var opr1 = tempArray1[0]
+            var opr2 = tempArray1[1];
+            var opr3 = tempArray1[2];
+            vm.roster.splice(4, 1, opr1);
+            vm.roster.splice(5, 1, opr2);
+            vm.roster.splice(6, 1, opr3);
+            tempArray1.splice(opr1, 1);
+            tempArray1.splice(opr2, 1);
+            tempArray1.splice(opr3, 1);
+            tempArray2.push(opr1, opr2, opr3);
 
-        //     vm.shuffle = function (refArray) {
-        //         console.log('shuffle')
-        //         var currentIndex = vm.refArray.length, tempVal, randomIndex
-        //         while (0 !== currentIndex) {
-        //             randomIndex = Math.floor(Math.random() * currentIndex);
-        //             currentIndex -= 1;
-        //             // And swap it with the current element.
-        //             tempVal = vm.refArray[currentIndex];
-        //             vm.refArray[currentIndex] = vm.refArray[randomIndex];
-        //             vm.refArray[randomIndex] = tempVal;
-        //         }//end while loop
-        //         return refArray;
-        //     }//end shuffle
-        //     vm.shuffle();
-        //     var jr1 = vm.refArray[0]
-        //     var jr2 = vm.refArray[1];
-        //     vm.roster.splice(2, 0, jr1);
-        //     vm.roster.splice(3, 0, jr2);
-        //     vm.refArray.splice(jr1, 1);
-        //     vm.refArray.splice(jr2, 1);
+            console.log('refArray', tempArray1)
+            console.log('roster', vm.roster);
 
-        //     console.log('jrs', jr1, jr2)
-        //     console.log('findJrs is done')
-        //     vm.findOprs();
-        // } //end findJRs function
+            console.log('findOprs is done')
+            vm.findAlt();
+        }
 
-        // vm.findOprs = function () {
-        //     console.log('findOprs is running')
-        //     tempHr = []
-        //     for (let i = 0; i < vm.refArray.length; i++) {
-        //         if (3 <= vm.refArray[i].oprRate) {
-        //             tempHr.push(vm.refArray[i])
-        //         }//end 'if' statement
-        //     }//end for loop
-        //     if (3 > tempHr.length) {
-        //         for (let i = 0; i < vm.refArray.length; i++) {
-        //             if (2 == vm.refArray[i].oprRate) {
-        //                 tempHr.push(vm.refArray[i])
-        //             }//end 'if' statement
-        //         }//end for loop
-        //     } //end if 3/2
-        //     if (3 > tempHr.length) {
-        //         for (let i = 0; i < vm.refArray.length; i++) {
-        //             if (1 == vm.refArray[i].oprRate) {
-        //                 tempHr.push(vm.refArray[i])
-        //             }//end 'if' statement
-        //         }//end for loop
-        //     } //end if 3/1
-        //     vm.shuffle = function (refArray) {
-        //         console.log('shuffle')
-        //         var currentIndex = vm.refArray.length, tempVal, randomIndex
-        //         while (0 !== currentIndex) {
-        //             randomIndex = Math.floor(Math.random() * currentIndex);
-        //             currentIndex -= 1;
-        //             // And swap it with the current element.
-        //             tempVal = vm.refArray[currentIndex];
-        //             vm.refArray[currentIndex] = vm.refArray[randomIndex];
-        //             vm.refArray[randomIndex] = tempVal;
-        //         }//end while loop
-        //         return refArray;
-        //     }//end shuffle
-        //     vm.shuffle();
-        //     var opr1 = vm.refArray[0]
-        //     var opr2 = vm.refArray[1];
-        //     var opr3 = vm.refArray[2];
-        //     vm.roster.splice(4, 0, opr1);
-        //     vm.roster.splice(5, 0, opr2);
-        //     vm.roster.splice(6, 0, opr3);
-        //     vm.refArray.splice(opr1, 1);
-        //     vm.refArray.splice(opr2, 1);
-        //     vm.refArray.splice(opr3, 1);
-
-
-        //     console.log('refArray', vm.refArray)
-        //     console.log('roster', vm.roster);
-
-        //     console.log('findOprs is done')
-        //     vm.findAlt();
-        // }
-
-        // vm.findAlt = function () {
-        //     vm.roster.splice(7, 0, vm.refArray[0]);
-        //     vm.refArray = [];
-        // }
-        // console.log('this is the roster:', vm.roster);
-        // console.log('this is the remaining refArray', vm.refArray);
+        vm.findAlt = function () {
+            vm.roster.splice(7, 1, tempArray1[0]);
+            tempArray2.push(tempArray1[0]);
+            tempArray1.splice(tempArray1[0], 1);
+        }
+        
+        console.log('this is the roster:', vm.roster);
+        console.log('this is the remaining refArray', tempArray1);
         vm.findHr()
     } //end find Roster 
 
