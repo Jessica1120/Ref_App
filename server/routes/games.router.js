@@ -10,6 +10,7 @@ router.get('/', function(req, res) {
             res.sendStatus(500);
         } else {
             client.query('SELECT * FROM games', function(queryError, resultObj){
+                done();
                 if(queryError) {
                     console.log(queryError);
                     res.sendStatus(500);

@@ -355,6 +355,6 @@ myApp.controller('RosterController', function (RosterService) {
         }
         RosterService.updateRoster(rosterObj)
         console.log('updated final roster', rosterObj);
-        vm.getThisGame();
+        // vm.getThisGame();
     }//end saveRoster function
 }); //end RosterController    

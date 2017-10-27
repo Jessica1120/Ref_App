@@ -1,5 +1,4 @@
 
-
 #body {
   background: #000000;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to bottom, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
@@ -45,6 +44,21 @@
   color: white;
   font-family: 'Permanent Marker', cursive;
   font-size: 20px;
+}
+
+.dropdown {
+  color: black;
+  background-color: #fff2fa;
+  box-shadow: 0px 3px 3px 0px;
+}
+
+.dropdownOption {
+  color: black;
+  background-color: #fff2fa;
+   
+}
+.dropdown:focus {
+  border-color: #f53fa9;
 }
 
 #editProfile {
@@ -94,8 +108,13 @@
  }
 
 .links {
-  color:  black;
-  margin: 30px;
+color:  black;
+}
+
+
+#logoutLink {
+  margin: 20px;
+  float: right;   
 }
 
 .navbar {
@@ -114,15 +133,19 @@
   color: white;
   font-size: 20px;
   margin: 80px;
+}
 
+#profileLink {
+  margin: 20px 40px 20px 20px;
+  display: inline-block 
  }
+
 #registerB {
   max-height: 100%;
 }
 #rosterGame {
   color: white;
   font-size: 20px;
-  margin: 80px;
   font-family: 'Permanent Marker', cursive;
 }
 #rosterOutput{

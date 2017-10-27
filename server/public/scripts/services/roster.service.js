@@ -47,6 +47,7 @@ myApp.service('RosterService', function($http, $location){
             data: rosterObj
         }).then(function(res) {
             console.log('RS updateRefs', res) 
+            self.getThisGame()
         }); // end then
     }; //end updateRoster function
 }); //end Roster Service    

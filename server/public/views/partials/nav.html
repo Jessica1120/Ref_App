@@ -1,6 +1,10 @@
 <div class="navbar" ng-controller="UserController as uc">
   <div class="container">
+    <div id="profileLink">
     <a href="#/user" class="links">Profile</a>
+  </div>
+  <div id="logoutLink">
     <a href="#" ng-click="uc.userService.logout()" class="links">Log Out</a>
+  </div>
   </div>
 </div>

@@ -27,6 +27,7 @@ router.get('/', function(req, res) {
             var gQuery = 'SELECT * FROM games WHERE id=$1'
             var value = [thisGame[0].id]
             client.query(gQuery, value, function(queryError, resultObj){
+                done();
                 if(queryError) {
                     console.log(queryError);
                     res.sendStatus(500);
