@@ -9,13 +9,13 @@ router.get('/', function(req, res) {
             console.log(connectionError);
             res.sendStatus(500);
         } else {
-            client.query('SELECT * FROM games', function(queryError, resultObj){
+            client.query('SELECT * FROM games ORDER BY date', function(queryError, resultObj){
                 done();
                 if(queryError) {
                     console.log(queryError);
                     res.sendStatus(500);
                 } else {
-                    console.log('experiment', resultObj.rows);
+                    console.log('get Games return obj.', resultObj.rows);
                         res.send(resultObj.rows);
                     }//end else
                 }) //end 2nd query
