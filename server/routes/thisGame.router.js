@@ -2,30 +2,20 @@ var router = require('express').Router();
 var path = require('path');
 var pool = require('../modules/pool.js');
 
-var thisGame = []
+var thisGameId = [];
 
-router.post('/', function (req, res) {
-    thisGame = [];
-    console.log('in post sendThisGame:', req.body);
-    thisGame.push (req.body);
-    res.sendStatus(202);
-})
-
- 
-// router.get('/', function(req, res) {
-//     console.log('in this get Game', thisGame)
-//     res.send(thisGame);
-// }); //end get 
-
-router.get('/', function(req, res) {
-    console.log('In Get this Game route');
+router.get('/:id', function(req, res) {
+    thisGame = req.params.id
+    thisGameId.push(thisGame)
+    console.log('In Get this Game route', thisGame);
+    console.log('thisGameId Array', thisGameId)
     pool.connect(function(connectionError, client, done){
         if(connectionError) {
             console.log(connectionError);
             res.sendStatus(500);
         } else {
             var gQuery = 'SELECT * FROM games WHERE id=$1'
-            var value = [thisGame[0].id]
+            var value = [thisGame]
             client.query(gQuery, value, function(queryError, resultObj){
                 done();
                 if(queryError) {

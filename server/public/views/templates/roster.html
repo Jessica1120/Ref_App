@@ -1,9 +1,9 @@
 <div ng-include="'views/partials/nav.html'"></div>
-<section id="rosterGame" ng-init="rc.getThisGame()"  class="container-fluid">
+<section id="rosterGame" ng-init="rc.loadGame()" class="container-fluid">
     <div class="row">
         <!--row 1-->
-        <p class="col-md-12  align-items-center">Game:</p> {{rc.thisGame.data[0].date | date:'MMMM d, yyyy'}} {{rc.thisGame.data[0].city}}, {{rc.thisGame.data[0].state}}
-        {{rc.thisGame.data[0].team1}} v {{rc.thisGame.data[0].team2}}
+        <p class="col-md-12  align-items-center">Game: </p>  {{rc.thisGame[0].date | date:'MMMM d, yyyy'}} {{rc.thisGame[0].city}}, {{rc.thisGame[0].state}}
+        {{rc.thisGame[0].team1}} v {{rc.thisGame[0].team2}}
     </div>
     <!--row 2, single column-->
     <div class="row" ng-init="rc.getRefs()">
@@ -146,7 +146,7 @@
         <!---final Roster -->
         <h2>Final Roster</h2>
         <!--HR-->
-        <p ng-hide="hrU" ng-click="hrU=!hrU">HR: {{rc.thisGame.data[0].headref_name}}</p>
+        <p ng-hide="hrU" ng-click="hrU=!hrU">HR: {{rc.thisGame[0].headref_name}}</p>
         <p ng-hide="!hrU">
             HR:
             <select ng-model="rc.hrNameIn" class="dropdown">
@@ -158,7 +158,7 @@
             <button type="button" class="saveButton" ng-click="rc.updateRoster()">Save</button>
         </p>
         <!--IPR-->
-        <p ng-hide="iprU" ng-click="iprU=!iprU">IPR: {{rc.thisGame.data[0].ipr_name}}</p>
+        <p ng-hide="iprU" ng-click="iprU=!iprU">IPR: {{rc.thisGame[0].ipr_name}}</p>
         <p ng-hide="!iprU">
             IPR:
             <select ng-model="rc.iprNameIn" class="dropdown">
@@ -170,7 +170,7 @@
             <button type="button" class="saveButton" ng-click="rc.updateRoster()">Save</button>
         </p>
         <!--JR1-->
-        <p ng-hide="jr1U" ng-click="jr1U=!jr1U">JR: {{rc.thisGame.data[0].jr1_name}}</p>
+        <p ng-hide="jr1U" ng-click="jr1U=!jr1U">JR: {{rc.thisGame[0].jr1_name}}</p>
         <p ng-hide="!jr1U">
             JR:
             <select ng-model="rc.jr1NameIn" class="dropdown">
@@ -182,7 +182,7 @@
             <button type="button" class="saveButton" ng-click="rc.updateRoster()">Save</button>
         </p>
         <!--JR2-->
-        <p ng-hide="jr2U" ng-click="jr2U=!jr2U">JR: {{rc.thisGame.data[0].jr2_name}}</p>
+        <p ng-hide="jr2U" ng-click="jr2U=!jr2U">JR: {{rc.thisGame[0].jr2_name}}</p>
         <p ng-hide="!jr2U">
             JR:
             <select ng-model="rc.jr2NameIn" class="dropdown">
@@ -194,7 +194,7 @@
             <button type="button" class="saveButton" ng-click="rc.updateRoster()">Save</button>
         </p>
         <!--OPR1-->
-        <p ng-hide="opr1U" ng-click="opr1U=!opr1U">OPR: {{rc.thisGame.data[0].opr1_name}}</p>
+        <p ng-hide="opr1U" ng-click="opr1U=!opr1U">OPR: {{rc.thisGame[0].opr1_name}}</p>
         <p ng-hide="!opr1U">
             OPR:
             <select ng-model="rc.opr1NameIn" class="dropdown">
@@ -206,7 +206,7 @@
             <button type="button" class="saveButton" ng-click="rc.updateRoster()">Save</button>
         </p>
         <!--OPR2-->
-        <p ng-hide="opr2U" ng-click="opr2U=!opr2U">OPR: {{rc.thisGame.data[0].opr2_name}}</p>
+        <p ng-hide="opr2U" ng-click="opr2U=!opr2U">OPR: {{rc.thisGame[0].opr2_name}}</p>
         <p ng-hide="!opr2U">
             OPR:
             <select ng-model="rc.opr2NameIn" class="dropdown">
@@ -218,7 +218,7 @@
             <button type="button" class="saveButton" ng-click="rc.updateRoster()">Save</button>
         </p>
         <!--OPR3-->
-        <p ng-hide="opr3U" ng-click="opr3U=!opr3U">OPR: {{rc.thisGame.data[0].opr3_name}}</p>
+        <p ng-hide="opr3U" ng-click="opr3U=!opr3U">OPR: {{rc.thisGame.opr3_name}}</p>
         <p ng-hide="!opr3U">
             OPR:
             <select ng-model="rc.opr3NameIn" class="dropdown">
@@ -229,7 +229,7 @@
         <p ng-hide="!opr3U" ng-click="opr3U=!opr3U">
             <button type="button" class="saveButton" ng-click="rc.updateRoster()">Save</button>
             <!--Alt-->
-            <p ng-hide="altU" ng-click="altU=!altU">ALT: {{rc.thisGame.data[0].alt_name}}</p>
+            <p ng-hide="altU" ng-click="altU=!altU">ALT: {{rc.thisGame.alt_name}}</p>
             <p ng-hide="!altU">
                 ALT:
                 <select ng-model="rc.altNameIn" class="dropdown">
@@ -240,7 +240,7 @@
             <p ng-hide="!altU" ng-click="altU=!altU">
                 <button type="button" class="saveButton" ng-click="rc.updateRoster()">Save</button>
 
-                <div id="buttons" ng-click="rc.getThisGame()">
+                <div id="buttons" ng-click="rc.getThisGame">
                     <button type="button" class="btn" ng-click="rc.saveRoster()">Save</button>
                 </div>
             </div>

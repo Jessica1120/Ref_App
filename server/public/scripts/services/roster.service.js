@@ -2,22 +2,27 @@ myApp.service('RosterService', function($http, $location){
     console.log('RosterService Loaded');
     var self = this
 
-    self.thisGame = {data: []} //object from getThisGame function
+    self.thisGame = {data: []} //object from getThisGame fu`nction
 
     self.allRefs = {data: []} //object from getRefs function
 
     self.updatedRoster = {data: []} //object from updateRoster function
 
-    self.getThisGame = function() {
-        $http({
+    self.getThisGame = function(game) {
+        console.log('RS game id', game)
+        console.log('getThisGame RS http', game );
+       return $http({
             method: 'GET',
-            url:    '/thisGame',
-        }).then(function(res) {
-            self.thisGame.data = (res.data);
-            console.log('RS getThisGame', self.thisGame.data)
-        }); // end then
-    }; //end getThisGame function
-
+            url:    '/thisGame/' +  game   
+         })
+         .then(function(res) {
+            self.thisGame = (res.data)
+            console.log('getThisGame RS response', self.thisGame);
+            $location.path('/roster')
+        }) //end then
+    }; //end getThisGame
+   
+   
     self.getRefs = function() {
         $http({
             method: 'GET',

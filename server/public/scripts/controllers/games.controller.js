@@ -29,10 +29,10 @@ myApp.controller('GamesController', function(GamesService) {
         vm.team2In = ''
     }; //end addGame function
    
-   //runs when game is clicked on - sends game to load roster view
-    vm.sendThisGame = function(game) {
-        console.log('sendThisGame GC', game);
-        GamesService.sendThisGame(game)
-    }; //end sendThisGame function
+//    runs when game is clicked on - sends game to load roster view
+    // vm.getThisGame = function(game) {
+    //     console.log('getThisGame GC', game);
+    //     GamesService.getThisGame(game)
+    // }; //end sendThisGame function
 
 }); //end GamesController

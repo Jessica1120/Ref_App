@@ -12,7 +12,7 @@ myApp.service('UserService', function($http, $location){
         }).then(function(response) {
             if(response.data) {
                 // user has a curret session on the server
-                self.userObject.username = response.data.username; //resend this in new get function for profile
+                self.userObject.username = response.data.username;
                 console.log('UserService -- getuser -- User Data: ', self.userObject.username);
             } else {
                 console.log('UserService -- getuser -- failure', response);

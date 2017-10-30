@@ -11,10 +11,12 @@ myApp.controller('RosterController', function (RosterService) {
     vm.testArray = [];
 
     vm.roster = [];// final roster
-
-   
-
-
+ 
+    vm.loadGame = function () {
+        // RosterService.getThisGame(vm.thisGame[0].id);
+        console.log ('loadGame running', vm.thisGame[0].id)
+    }
+ 
     //client side only functions
     vm.addRef = function () {
         var newRef = {
@@ -311,15 +313,18 @@ myApp.controller('RosterController', function (RosterService) {
     }
    
     //gets the game in server posted by Game Controller/Service
-    vm.getThisGame = function () {
-        RosterService.getThisGame();
-        console.log('RC getThisGame', RosterService.thisGame)
+    vm.getThisGame = function(game) {
+        console.log('getThisGame GC', game);
+        RosterService.getThisGame(game)
+        
     }; //end getThisGame
 
+
     //gets refs from DataBase
-    vm.getRefs = function () {
+    vm.getRefs = function () { //runs before
         RosterService.getRefs();
         console.log('RC getRefs', RosterService.allRefs)
+        console.log('thisgame in get Refs', vm.thisGame)
     };
 
     //saves roster to DataBase
@@ -333,11 +338,11 @@ myApp.controller('RosterController', function (RosterService) {
             opr2:   vm.roster[5].derbyname,
             opr3:   vm.roster[6].derbyname,
             alt:    vm.roster[7].derbyname,
-            id: vm.thisGame.data[0].id,
+            id:     vm.thisGame[0].id,
         } //error "cannon read property of undefined" must have entry to work - figure out a way to fix this - maybe if empty/then null function
         RosterService.saveRoster(rosterObj)
         console.log('final roster', rosterObj);
-        vm.getThisGame();
+        // vm.getThisGame();
     }; 
     
     //change ref on final roster
